@@ -19,6 +19,22 @@
     }
 }
 
+.info-horizontal{
+    .icon{
+        float: left;
+        margin-top: 24px;
+        margin-right: 10px;
+
+        >i{
+            font-size: $font-size-h2;
+        }
+    }
+    .description{
+        overflow: hidden;
+    }
+
+}
+
 .icon{
     &.icon-primary{
         color: $brand-primary;
@@ -34,5 +50,8 @@
     }
     &.icon-danger{
         color: $brand-danger;
+    }
+    &.icon-rose{
+        color: $brand-rose;
     }
 }

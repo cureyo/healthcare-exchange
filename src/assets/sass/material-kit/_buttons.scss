@@ -39,7 +39,7 @@
     &.btn-danger{
       @include btn-styles($brand-danger);
     }
-    &.btn-upgrade{
+    &.btn-rose{
       @include btn-styles($brand-rose);
     }
     &.btn-white{
@@ -54,6 +54,44 @@
             background: transparent;
             box-shadow: none;
         }
+    }
+
+    // social buttons
+    &.btn-facebook {
+    	@include social-buttons-color($social-facebook);
+    }
+    &.btn-twitter {
+    	@include social-buttons-color($social-twitter);
+    }
+    &.btn-pinterest {
+    	@include social-buttons-color($social-pinterest);
+    }
+    &.btn-google {
+    	@include social-buttons-color($social-google);
+    }
+    &.btn-linkedin {
+    	@include social-buttons-color($social-linkedin);
+    }
+    &.btn-dribbble {
+    	@include social-buttons-color($social-dribbble);
+    }
+    &.btn-github {
+    	@include social-buttons-color($social-github);
+    }
+    &.btn-youtube {
+    	@include social-buttons-color($social-youtube);
+    }
+    &.btn-instagram {
+    	@include social-buttons-color($social-instagram);
+    }
+    &.btn-reddit {
+    	@include social-buttons-color($social-reddit);
+    }
+    &.btn-tumblr {
+    	@include social-buttons-color($social-tumblr);
+    }
+    &.btn-behance {
+    	@include social-buttons-color($social-behance);
     }
 
     &:focus,
@@ -138,8 +176,8 @@
     }
 
     &.btn-just-icon{
-        font-size: 18px;
-        padding: 10px 10px;
+        font-size: 20px;
+        padding: 12px 12px;
         line-height: 1em;
 
         i{
@@ -159,6 +197,10 @@
         font-size: $mdb-btn-icon-size-mini;
         top: -1px;
         position: relative;
+    }
+
+    .caret{
+        margin-left: 3px;
     }
 
 }
@@ -200,16 +242,6 @@
   position: relative;
   //border-radius: 2px;
   margin: 10px 1px;
-
-  &.open {
-    .dropdown-toggle {
-      //box-shadow: none;
-    }
-
-    & > .dropdown-toggle.btn {
-      @include variations(unquote(".btn"), unquote(""), background-color, $mdb-btn-background-color);
-    }
-  }
 
   .dropdown-menu {
     border-radius: 0 0 $border-radius-base $border-radius-base;

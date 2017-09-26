@@ -11,6 +11,10 @@
     overflow: hidden;
     border-radius: inherit;
     pointer-events: none;
+
+    .disabled &{
+        display: none;
+    }
 }
 .ripple {
     position: absolute;

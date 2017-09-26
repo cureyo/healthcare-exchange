@@ -16,8 +16,23 @@
 
         &:hover,
         &:focus {
-          @include shadow-8dp();
+          @include shadow-small-color($brand-primary);
+        }
+    }
 
+    &.dropdown-with-icons{
+        li > a{
+            padding: 12px 20px 12px 12px;
+
+            .material-icons{
+                vertical-align: middle;
+                font-size: 24px;
+                position: relative;
+                margin-top: -4px;
+                top: 1px;
+                margin-right: 12px;
+                opacity: .5;
+            }
         }
     }
 
@@ -34,25 +49,49 @@
     .divider{
         margin: 5px 0;
     }
-}
 
-@media (min-width: $screen-md-min){
-    .dropdown{
-        .dropdown-menu{
-            @include transition($fast-transition-time, $transition-linear);
-            margin-top: -20px;
-            opacity: 0;
-            visibility: hidden;
-            display: block;
-        }
+    .navbar &,
+    .navbar.navbar-default &{
+        li{
+            > a:hover,
+            > a:focus{
+                color: $white-color;
+                background-color: $brand-primary;
 
-        &.open{
-            .dropdown-menu{
-                opacity: 1;
-                visibility: visible;
-                margin-top: 1px;
+                @include shadow-small-color($brand-primary);
             }
         }
     }
 
+}
+
+.dropdown .dropdown-menu,
+.dropup:not(.bootstrap-select) .dropdown-menu,
+.dropdown-menu.bootstrap-datetimepicker-widget{
+    @include transition($fast-transition-time, $transition-linear);
+    @include transform-translate-y(-20px);
+    visibility: hidden;
+    display: block;
+    opacity: 0;
+}
+
+.dropdown.open .dropdown-menu,
+.dropdown-menu.bootstrap-datetimepicker-widget.open{
+    opacity: 1;
+    visibility: visible;
+    @include transform-translate-y(1px);
+}
+
+.dropup:not(.bootstrap-select){
+    .dropdown-menu{
+        @include transform-translate-y(20px);
+    }
+
+    &.open{
+        .dropdown-menu{
+            opacity: 1;
+            visibility: visible;
+            @include transform-translate-y(-2px);
+        }
+    }
 }

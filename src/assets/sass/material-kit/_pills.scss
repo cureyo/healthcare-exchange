@@ -1,5 +1,18 @@
 .nav-pills{
 
+    .section-dark &,
+    .section-image &{
+        > li > a{
+            color: $gray-color;
+        }
+        > li{
+            > a:hover,
+            > a:focus{
+                background-color: #EEEEEE;
+            }
+        }
+    }
+
     > li {
         > a{
             line-height: $mdb-btn-font-size-base * 2;
@@ -32,6 +45,18 @@
             }
         }
 
+    }
+
+    &:not(.nav-pills-icons){
+        > li > a{
+            border-radius: $border-radius-extreme;
+        }
+    }
+
+    &.nav-stacked{
+        > li + li{
+            margin-top: 5px;
+        }
     }
 
     &.nav-pills-info{
@@ -80,7 +105,19 @@
                 &:focus,
                 &:hover{
                     background-color: $brand-danger;
-                    @include shadow-big-color($brand-danger);
+                    @include shadow-big-color($brand-warning);
+                }
+            }
+        }
+    }
+    &.nav-pills-rose{
+        > li {
+            &.active > a{
+                &,
+                &:focus,
+                &:hover{
+                    background-color: $brand-rose;
+                    @include shadow-big-color($brand-rose);
                 }
             }
         }

@@ -1,24 +1,59 @@
 .carousel{
     .carousel-control{
-        width: 50%;
-
         &.left,
         &.right{
             background-image: none;
         }
 
-        .material-icons,
-        .fa{
-            display: none;
+        &.right{
+            i{
+                right: 0;
+            }
         }
     }
-    .left{
-        cursor: url("../img/arrow-left.png"), url("../img/arrow-left.cur"), default !important;
+
+    .item{
+        text-align: center;
     }
-    .right{
-        cursor: url("../img/arrow-right.png"), url("../img/arrow-right.cur"), default !important;
+    &.carousel-full-nagivation{
+        .carousel-control{
+            width: 50%;
+
+            &.left,
+            &.right{
+                background-image: none;
+            }
+
+            .material-icons,
+            .fa{
+                display: none;
+            }
+        }
+        .left{
+            cursor: url("../img/arrow-left.png"), url("../img/arrow-left.cur"), default !important;
+        }
+        .right{
+            cursor: url("../img/arrow-right.png"), url("../img/arrow-right.cur"), default !important;
+        }
     }
 
+    .carousel-control{
+        height: 15%;
+        margin: auto;
+
+        .material-icons{
+            z-index: 5;
+            display: inline-block;
+            font-size: 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 50px;
+            margin: auto;
+        }
+    }
     .carousel-indicators{
         bottom: 5px;
 
@@ -42,7 +77,7 @@
 
     .carousel-caption{
         padding-bottom: 45px;
-        
+
         .material-icons{
             position: relative;
             top: 5px;
