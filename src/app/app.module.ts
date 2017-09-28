@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { AuthService } from "./services/firebaseauth.service";
+
 import { AngularFire, FirebaseAuth, FirebaseListObservable } from 'angularfire2';
 import { FacebookInitParams, FacebookLoginResponse, FacebookService } from "ng2-facebook-sdk";
 import { RouterModule } from '@angular/router';
