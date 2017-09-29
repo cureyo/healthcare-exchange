@@ -15,7 +15,7 @@ export class AuthService {
 
    constructor(public af: AngularFire, public firebase: FirebaseAuth, private router: Router) {
 
-    this.users = af.database.list(this.db.users);
+    this.users = af.database.list(this.db.doctors);
    
   }//constructor
 
@@ -37,7 +37,7 @@ export class AuthService {
     console.log("formdata");
     console.log(formData);
     console.log(formData.specializations);
-    const db = this.af.database.object(this.db.users + formData.authUID);
+    const db = this.af.database.object(this.db.doctors + formData.authUID);
     return db.set(formData)
 
   }//_saveUser
@@ -71,7 +71,48 @@ export class AuthService {
     }
 
   }//_getUserInfo
+  fblogin() {
+    console.log("doctor login firebase function called:");
+    return (
+      this.af.auth.login({
+        provider: AuthProviders.Facebook,
+        method: AuthMethods.Popup,
+        // scope: ["manage_pages", "publish_pages", "ads_management", "user_friends", "user_relationships", "user_relationship_details", "pages_messaging", "business_management"]
+      }).then(
+        data => {
+          console.log(data);
+        }).catch(
+          error => {
+            console.log(error);
+            if (error['code'] == "auth/web-storage-unsupported")
+            alert('Oops! Seems like 3rd party cookies are disabled. You can change it to just allow us, if you want. Trust us! We are good people For Chrome, MORE (icon with 3 dots) > SETTINGS > ADVANCED (Section) > CONTENT SETTINGS > COOKIES > MANAGE EXCEPTIONS & Set your preference');
+          else 
+        alert(error.message);}
+        )
+    )
 
+  }
+    glogin() {
+    console.log("doctor login firebase function called:");
+    return (
+      this.af.auth.login({
+        provider: AuthProviders.Google,
+        method: AuthMethods.Popup,
+        // scope: ["manage_pages", "publish_pages", "ads_management", "user_friends", "user_relationships", "user_relationship_details", "pages_messaging", "business_management"]
+      }).then(
+        data => {
+          console.log(data);
+        }).catch(
+          error => {
+            console.log(error);
+            if (error['code'] == "auth/web-storage-unsupported")
+            alert('Oops! Seems like 3rd party cookies are disabled. You can change it to just allow us, if you want. Trust us! We are good people For Chrome, MORE (icon with 3 dots) > SETTINGS > ADVANCED (Section) > CONTENT SETTINGS > COOKIES > MANAGE EXCEPTIONS & Set your preference');
+          else 
+        alert(error.message);}
+        )
+    )
+
+  }
   private _changeState(user: any = null) {
     if (user) {
       //console.log("the user value in change state ",user);
@@ -102,7 +143,7 @@ export class AuthService {
 
   public _fetchDocUser(uid) {
     //console.log(this.db.docUsers + uid);
-    return this.af.database.object(this.db.docUsers + uid).map(
+    return this.af.database.object(this.db.doctors + uid).map(
       res => {
         //console.log(res);
         if (!res.firstName) {
@@ -115,4 +156,5 @@ export class AuthService {
       }//res
     );
   }//_fetchUser
+
 }

@@ -13,7 +13,7 @@ declare var $: any
   selector: 'my-app',
   templateUrl: 'app.component.html',
   moduleId: module.id,
-  providers: [AuthService, AngularFire, FacebookService]
+  // providers: [AuthService, AngularFire, FacebookService]
 })
 
 export class AppComponent implements OnInit{
@@ -23,6 +23,7 @@ export class AppComponent implements OnInit{
   private fbAccessToken: string;
   private sideBarCover: any;
   private caredOnes: any;
+  private user: any;
   private showLoginMod: boolean = false;
   private noCaredOnes: boolean = false;
   public showSideBar: boolean = false;
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit{
    private _authService: AuthService,
     private fs: FacebookService,
     private router: Router,
+    
     location: PlatformLocation
   ) {
     location.onPopState(() => {
@@ -48,6 +50,39 @@ export class AppComponent implements OnInit{
   }//constructor
 
 ngOnInit() {
+   this._authService._getUser()
+      .subscribe(
+      data => {
+        console.log(data);
+        if (!data.isAuth) {
+          //window.location.href = window.location.origin + '/login?next=' + window.location.pathname;
+        } else {
+          this.isAuth = data.isAuth;
+          this.user = data.user;
+          this._authService._fetchDocUser(data.user.uid)
+            .subscribe(res => {
+              //console.log("from login: ");
+              console.log(res);
+              if (res.hasOwnProperty('authUID')) {
+                // this.activatedRoute.queryParams
+                //   .subscribe(params => {
+                //       //console.log("query parameters");
+                //     //console.log(params);
+                   
+                //  });
+
+                console.log("logged in")
+
+              } else {
+                this.router.navigate(['register']);
+
+              }
+
+            })
+        }
+      },
+      error => console.log(error)
+      );
 
 }
 

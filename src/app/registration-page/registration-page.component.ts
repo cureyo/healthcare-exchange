@@ -3,12 +3,19 @@ import { AuthService } from "../services/firebaseauth.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import {FormGroup, FormBuilder,Validators} from "@angular/forms";
 
+// @Component({
+//   templateUrl: 'registration-page.component.html',
+//   selector: 'registration-page',
+//   styleUrls: './registration-page.component.css',
+//   //styleUrls: ['./bloodsugar-carepath.component.css']
+//   moduleId: module.id
+// })
 @Component({
-  templateUrl: 'landing-page.component.html',
-  selector: 'landing-page',
-  moduleId: module.id
+  selector: 'registration-component',
+  templateUrl: 'registration-page.component.html',
+  styleUrls: ['registration-page.component.css']
 })
-export class LandingPageComponent implements OnInit {
+export class RegistrationPageComponent implements OnInit {
 
 private loginForm:FormGroup;
   private user: {};
@@ -19,14 +26,7 @@ private loginForm:FormGroup;
       ngOnInit() {
 
        
-      this.loginForm=this._fb.group({
-          fname:[],
-         email:[,Validators.required],
-         psw:[]
-       })
-
+     
       }
-      emailLogin(model) {
-
-      }
+      
 }
