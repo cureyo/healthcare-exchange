@@ -8,6 +8,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-2">
+				
 				<!--      Wizard container        -->
 				<div class="wizard-container">
 					<div class="card wizard-card" data-color="red" id="wizard">
@@ -20,7 +21,7 @@
 								</h3>
 								<h5>This information will let us know more about you.</h5>
 							</div>
-							<div class="navigation-pills">
+							<div class="wizard-navigation">
 								<ul class="nav nav-pills nav-pills-icons" role="tablist">
 									<li><a href="#details" role="tab" data-toggle="tab">Basic Details</a></li>
 									<li><a href="#engage" role="tab" data-toggle="tab">Engagement Type</a></li>
@@ -29,12 +30,8 @@
 									<li><a href="#facility" role="tab" data-toggle="tab">Facility Details</a></li>
 								</ul>
 							</div>
-
-							<div class=" progress progress-line-primary">
-								<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
-
-								</div>
-							</div>
+<!--<div class="moving-tab" style="width: 187.5px; transform: translate3d(-8px, 0px, 0px); transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1);">Location</div>-->
+						
 
 							<div class="tab-content">
 								<div class="tab-pane" id="details">
@@ -43,8 +40,17 @@
 											<h4 class="info-text"> Let's start with the basic details.</h4>
 										</div>
 
-										<!--<div class="col-sm-6">-->
-
+										<div class="col-sm-6">
+											<div class="input-group">
+													<span class="input-group-addon">
+														<i class="material-icons">email</i>
+													</span>
+													<div class="form-group label-floating is-empty">
+			                                          	<label class="control-label">Your Email</label>
+			                                          	<input name="name" type="text" class="form-control">
+			                                        <span class="material-input"></span></div>
+												</div>
+									</div>
 											<div class="input-group" style="width: 40%; float: left; z-index: 100; margin-top: 0px; margin-bottom: 0px; margin-left: 20px;">
 												<label class="control-label" for="co_fullName">Full Name</label>
 												<input type="text" class="form-control" name="co_fullName" id="co_fullName" />
@@ -86,59 +92,11 @@
 												<input type="text" class="form-control" name="co_area" id="co_area" />
 										
 											</div>
-										<!--</div>-->
-										<!--<div class="input-group">
-													<span class="input-group-addon">
-														<i class="material-icons">Name</i>
-													</span>
-													<div class="form-group label-floating">
-			                                          	<label class="control-label">Your Email</label>
-			                                          	<input name="name" type="text" class="form-control">
-			                                        </div>
-												</div>
-
-												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="material-icons">lock_outline</i>
-													</span>
-													<div class="form-group label-floating">
-			                                          	<label class="control-label">Your Password</label>
-			                                          	<input name="name2" type="password" class="form-control">
-			                                        </div>
-												</div>-->
-
-
-										<!--<div class="col-sm-6">
-											<div class="form-group label-floating">
-												<label class="control-label">Country</label>
-												<select class="form-control">
-														<option disabled="" selected=""></option>
-	                                                	<option value="Afghanistan"> Afghanistan </option>
-	                                                	<option value="Albania"> Albania </option>
-	                                                	<option value="Algeria"> Algeria </option>
-	                                                	<option value="American Samoa"> American Samoa </option>
-	                                                	<option value="Andorra"> Andorra </option>
-	                                                	<option value="Angola"> Angola </option>
-	                                                	<option value="Anguilla"> Anguilla </option>
-	                                                	<option value="Antarctica"> Antarctica </option>
-	                                                	<option value="...">...</option>
-		                                        	</select>
-											</div>
-											<div class="form-group label-floating">
-												<label class="control-label">Daily Budget</label>
-												<select class="form-control">
-														<option disabled="" selected=""></option>
-	                                                	<option value="Afghanistan"> < $100 </option>
-	                                                	<option value="Albania"> $100 - $499 </option>
-	                                                	<option value="Algeria"> $499 - $999 </option>
-	                                                	<option value="American Samoa"> $999+ </option>
-		                                        	</select>
-											</div>
-										</div>-->
+									
 									</div>
 								</div>
 								<div class="tab-pane" id="engage">
-									<h4 class="info-text">What type of clinic would you want? </h4>
+									<h4 class="info-text">What describes you best? </h4>
 									<div class="row">
 										<div class="col-sm-10 col-sm-offset-1">
 											<div class="col-sm-4">
@@ -147,7 +105,7 @@
 													<div class="icon">
 														<i class="fa fa-pencil"></i>
 													</div>
-													<h6>Facility</h6>
+													<h6>Facility Owner</h6>
 												</div>
 											</div>
 											<div class="col-sm-4">
@@ -156,7 +114,7 @@
 													<div class="icon">
 														<i class="fa fa-terminal"></i>
 													</div>
-													<li><a href="#speciality" role="tab" data-toggle="tab">Speciality</a></li>
+													<li><a href="#speciality" role="tab" data-toggle="tab">Healthcare Professional</a></li>
 												</div>
 											</div>
 											<div class="col-sm-4">
@@ -175,7 +133,7 @@
 									<div class="row">
 										<h4 class="info-text"> Education.</h4>
 										<div class="col-sm-6 col-sm-offset-1">
-											<div class="form-group">
+											<div class="input-group">
 												<label>Graduation</label>
 												<textarea class="form-control" placeholder="" rows="6"></textarea>
 											</div>

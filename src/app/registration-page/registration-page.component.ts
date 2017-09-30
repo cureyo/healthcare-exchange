@@ -3,6 +3,7 @@ import { AuthService } from "../services/firebaseauth.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import {FormGroup, FormBuilder,Validators} from "@angular/forms";
 
+declare var $ : any;
 // @Component({
 //   templateUrl: 'registration-page.component.html',
 //   selector: 'registration-page',
@@ -24,8 +25,8 @@ private loginForm:FormGroup;
   constructor(private _fb: FormBuilder,private _authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
       ngOnInit() {
-
-       
+        $.getScript('../../assets/js/jquery.bootstrap.js');
+        $.getScript('../../assets/js/material-bootstrap-wizard.js');
      
       }
       
