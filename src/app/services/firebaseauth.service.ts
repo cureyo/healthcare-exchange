@@ -92,6 +92,9 @@ export class AuthService {
     )
 
   }
+    public _getMedicalSpecialities() {
+    return this.af.database.object(this.db.MedicalSpecialities);
+  }
     glogin() {
     console.log("doctor login firebase function called:");
     return (

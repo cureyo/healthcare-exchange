@@ -179,5 +179,17 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 
     .wizard-navigation{
         position: relative;
+         >.nav-pills{
+      > li {
+          &.active > a{
+              &,
+              &:focus,
+              &:hover{
+                  box-shadow: none;
+              }
+          }
+
+      }
+  } 
     }
 }

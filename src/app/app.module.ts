@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Provider } from '@angular/core';
+import { NgModule, Provider, Renderer2 } from '@angular/core';
 import { CONFIG } from '../app/config/firebase.config';
 import { AuthService } from "./services/firebaseauth.service";
 
@@ -28,6 +28,12 @@ import { JsonpModule } from '@angular/http';
 import { NgPipesModule } from 'ngx-pipes';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import { HeaderComponent } from './header/header.component';
+import { ListingPageComponent } from './listings-page/listing-page.component';
+import { PostCaseComponent } from './post-case/post-case.component';
+// import { TagInputModule } from 'ng2-tag-input';
+import { TagInputComponent, TagComponent, TagInputModule, TagInputForm } from 'ng2-tag-input';
+import {RlTagInputModule} from 'angular2-tag-input';
 // Must export the config
 
 export const firebaseAuthConfig = {
@@ -46,7 +52,14 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     LandingPageComponent,
-    RegistrationPageComponent
+    RegistrationPageComponent,
+    ListingPageComponent,
+    HeaderComponent,
+    PostCaseComponent,
+    // TagInputDropdown,
+    // TagInputComponent,
+    // TagInputModule
+    
   ],
   imports: [
     CommonModule,
@@ -61,9 +74,13 @@ export const firebaseConfig = {
     Ng2AutoCompleteModule,
     GooglePlaceModule,
     JsonpModule,
+    TagInputModule,
+    RlTagInputModule,
+    // TagInputComponent,
+    // TagInputDropdown,
     NgPipesModule
   ],
-  providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }, AngularFire, FacebookService, LandingPageComponent, RegistrationPageComponent, AuthService],
+  providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }, AngularFire, TagComponent, FacebookService, ListingPageComponent, PostCaseComponent, HeaderComponent, LandingPageComponent, TagInputComponent, TagInputModule, RegistrationPageComponent, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

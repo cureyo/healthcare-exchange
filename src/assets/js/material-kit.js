@@ -44,9 +44,9 @@ var big_image;
 
      //Activate tags
      //removed class label and label-color from tag span and replaced with data-color
-     var tagClass = $('.tagsinput').data('color');
+     var tagClass = $('.rl-tag-input').data('color');
 
-     $('.tagsinput').tagsinput({
+     $('.rl-tag-input').tagsinput({
          tagClass: ' tag-'+ tagClass +' '
      });
 

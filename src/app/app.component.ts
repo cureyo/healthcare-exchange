@@ -13,6 +13,7 @@ declare var $: any
   selector: 'my-app',
   templateUrl: 'app.component.html',
   moduleId: module.id,
+  
   // providers: [AuthService, AngularFire, FacebookService]
 })
 
@@ -74,7 +75,7 @@ ngOnInit() {
                 console.log("logged in")
 
               } else {
-                this.router.navigate(['register']);
+                this.router.navigate(['listings']);
 
               }
 

@@ -65,6 +65,7 @@ $(document).ready(function(){
         onInit : function(tab, navigation, index){
             //check number of tabs and fill the entire row
             var $total = navigation.find('li').length;
+            console.log("$total",$total);
             var $wizard = navigation.closest('.wizard-card');
 
             $first_li = navigation.find('li:first-child a').html();
@@ -184,10 +185,12 @@ $(window).resize(function(){
 
 function refreshAnimation($wizard, index){
     $total = $wizard.find('.nav li').length;
-    $li_width = 100/$total;
+    $li_width = 99/$total;
 
     total_steps = $wizard.find('.nav li').length;
-    move_distance = $wizard.width() / total_steps;
+    console.log("Total Steps", total_steps);
+    move_distance = $wizard.closest('.wizard-container').width() / total_steps;
+    
     index_temp = index;
     vertical_level = 0;
 
