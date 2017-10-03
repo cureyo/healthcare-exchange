@@ -40,7 +40,7 @@
 											<h4 class="info-text"> Let's start with the basic details.</h4>
 										</div>
 
-										<div class="col-sm-6">
+										<!--<div class="col-sm-6">
 											<div class="input-group">
 												<span class="input-group-addon">
 														<i class="material-icons">email</i>
@@ -50,7 +50,7 @@
 													<input name="name" type="text" class="form-control">
 													<span class="material-input"></span></div>
 											</div>
-										</div>
+										</div>-->
 										<div class="input-group" style="width: 40%; float: left; z-index: 100; margin-top: 0px; margin-bottom: 0px; margin-left: 20px;">
 											<label class="control-label" for="co_fullName">Full Name</label>
 											<input type="text" class="form-control" name="co_fullName" id="co_fullName" />
@@ -130,47 +130,36 @@
 									</div>
 								</div>
 								<div class="tab-pane" id="education">
-									<div class="row">
-										<h4 class="info-text"> Education.</h4>
-										<div class="col-sm-6 col-sm-offset-1">
-											<div class="input-group">
-												<label>Graduation</label>
-												<textarea class="form-control" placeholder="" rows="6"></textarea>
+									
+										<h4 class="info-text"> Education</h4>
+										
+											<div class="input-group" style="width: 40%; float: left; z-index: 100; margin-top: 0px; margin-bottom: 0px; margin-left: 10px;">
+												<label class="control-label" for="co_graduation">Graduation</label>
+												<input type="text" class="form-control" name="co_degree" id="co_degree" />
+
 											</div>
-										</div>
-										<div class="col-sm-4">
-											<div class="input-group" style="width: 40%; float: left; z-index: 100; margin-top: 0px; margin-bottom: 0px; margin-left: 20px;">
+											<div class="input-group" style="width: 40%; float: right; z-index: 100; margin-top: 0px; margin-bottom: 0px; margin-right: 10px;">
 												<label class="control-label" for="co_degree">Degree</label>
 												<input type="text" class="form-control" name="co_degree" id="co_degree" />
 
 											</div>
-											<div class="input-group" style="width: 40%; float: left; z-index: 100; margin-top: 0px; margin-bottom: 0px; margin-left: 20px;">
+											<div class="input-group" style="width: 40%; float: left; z-index: 100; margin-top: 0px; margin-bottom: 0px; margin-left: 10px;">
 												<label class="control-label" for="co_institute">Institute</label>
 												<input type="text" class="form-control" name="co_institute" id="co_institute" />
 
 											</div>
-											<div class="input-group" style="width: 40%; float: left; z-index: 100; margin-top: 0px; margin-bottom: 0px; margin-left: 20px;">
+											<div class="input-group" style="width: 40%; float: right; z-index: 100; margin-top: 0px; margin-bottom: 0px; margin-right: 10px;">
 												<label class="control-label" for="co_completionYear">Completion Year</label>
 												<input type="text" class="form-control" name="co_completionYear" id="co_completionYear" />
 
 											</div>
 
-										</div>
-									</div>
 								</div>
 								<div class="tab-pane" id="experience">
 									<!--<h4 class="info-text">What type of clinic would you want? </h4>-->
 									<div class="row">
 										<div class="col-sm-10 col-sm-offset-1">
-											<div class="col-sm-4">
-												<!--<div class="choice" data-toggle="wizard-checkbox">
-													<input type="checkbox" name="jobb" value="Design">
-													<div class="icon">
-														<i class="fa fa-pencil"></i>
-													</div>
-													<h6>Facility</h6>
-												</div>-->
-											</div>
+
 											<div class="input-group" style="width: 80%; float: left; z-index: 100; margin-top: 0px; margin-bottom: 0px; margin-left: 20px;">
 												<label class="control-label" for="co_designation">Designation/Role</label>
 												<input type="text" class="form-control" name="co_designation" id="co_designation" />
@@ -183,35 +172,27 @@
 											</div>
 
 											<div class="input-group" style="width: 40%; float: left; z-index: 100; margin-top: 0px; margin-bottom: 0px; margin-left: 20px;">
-												<label class="control-label" for="co_time">Add Experience</label>
-												<input type="text" class="form-control" name="co_time" id="co_time" />
+												<label class="control-label" for="co_experience">Add Experience</label>
+												<input type="text" class="form-control" name="co_experience" id="co_experience" />
 
 											</div>
 
-											<div id="file-uploader">
-												<!--<div class="title">-->
-													<!--<h3> File-Uploader</h3>-->
-												<!--</div>-->
-												<div class="row">
-													<div class="col-md-5 col-sm-8">
-														<h4>
-															<small>Regular Image</small>
-														</h4>
-														<div class="fileinput fileinput-new text-center" data-provides="fileinput">
-															<img src="assets/img/image_placeholder.jpg" alt="..." class="__web-inspector-hide-shortcut__">
-														</div>
-														<div class="fileinput-preview fileinput-exists thumbnail img-raised">
-														</div>
-														<div>
-															<span class="btn btn-raised btn-round btn-default btn-file">
-										<span class="fileinput-new">Select image</span>
-															<span class="fileinput-exists">Change</span>
-															<input type="file" name="...">
-															</span>
-															<a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
-														</div>
+											<div class="col-md-5 col-sm-8">
+												
+												<div class="fileinput fileinput-new text-center" data-provides="fileinput">
+													<h4><small>Upload Image</small></h4>
+													<div class="fileinput-new thumbnail img-raised">
+														<img src="assets/img/image_placeholder.jpg" alt="...">
 													</div>
-
+													<div class="fileinput-preview fileinput-exists thumbnail img-raised"></div>
+													<div>
+														<span class="btn btn-raised btn-round btn-default btn-file">
+										<span class="fileinput-new">Select image</span>
+														<span class="fileinput-exists">Change</span>
+														<input type="file" name="...">
+														</span>
+														<a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+													</div>
 												</div>
 											</div>
 										</div>

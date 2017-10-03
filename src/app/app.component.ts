@@ -75,7 +75,8 @@ ngOnInit() {
                 console.log("logged in")
 
               } else {
-                this.router.navigate(['listings']);
+                // this.router.navigate(['listings']);
+                this.router.navigate(['register']);
 
               }
 
