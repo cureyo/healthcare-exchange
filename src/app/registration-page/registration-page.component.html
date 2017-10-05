@@ -11,8 +11,8 @@
 
 				<!--      Wizard container        -->
 				<div class="wizard-container">
-					<div class="card wizard-card" data-color="red" id="wizard">
-						<form action="" method="">
+					<div *ngIf="formReady" class="card wizard-card" data-color="red" id="wizard">
+						<form [formGroup]="registrationForm" action="" method="">
 							<!--        You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"             -->
 
 							<div class="wizard-header">
@@ -25,8 +25,8 @@
 								<ul class="nav nav-pills nav-pills-icons" role="tablist">
 									<li><a href="#details" role="tab" data-toggle="tab">Basic Details</a></li>
 									<li><a href="#engage" role="tab" data-toggle="tab">Engagement Type</a></li>
-									<li><a href="#education" role="tab" data-toggle="tab">Education</a></li>
-									<li><a href="#experience" role="tab" data-toggle="tab">Experience</a></li>
+									<li ><a href="#education" role="tab" data-toggle="tab">Education</a></li>
+									<li ><a href="#experience" role="tab" data-toggle="tab">Experience</a></li>
 									<li><a href="#facility" role="tab" data-toggle="tab">Facility Details</a></li>
 								</ul>
 							</div>
@@ -40,7 +40,7 @@
 											<h4 class="info-text"><b> Let's start with the basic details.</b></h4>
 										</div>
 
-										<div class="col-am-10">
+										<div class="col-sm-10 col-md-offset-1">
 											<div class="col-sm-6">
 
 												<div class="input-group">
@@ -49,105 +49,74 @@
 													</span>
 													<div class="form-group label-floating is-empty">
 														<label class="control-label">Full Name</label>
-														<input name="name" type="text" class="form-control">
+														<input formControlName="fullName"  type="text" class="form-control">
 														<span class="material-input"></span></div>
 
 												</div>
-											</div>
-										</div>
-
-										<div class="col-am-10">
-											<div class="col-sm-6">
-
 												<div class="input-group">
 													<span class="input-group-addon">
 														<i class="material-icons">email</i>
 													</span>
 													<div class="form-group label-floating is-empty">
 														<label class="control-label">Your Email</label>
-														<input name="name" type="text" style="width: 70%;" class="form-control">
+														<input formControlName="email" type="text" class="form-control">
 														<span class="material-input"></span></div>
 												</div>
-
+												
+												
 											</div>
-										</div>
-
-										<div class="col-am-10">
+										
 											<div class="col-sm-6">
-												<!--<div style="width: 100%; float: left;">-->
 												<div class="input-group">
 													<span class="input-group-addon">
 														<i class="material-icons">phone</i>
 													</span>
 													<div class="form-group label-floating is-empty">
 														<label class="control-label">Phone Number</label>
-														<input name="name" type="text" style="width: 70%;" class="form-control">
+														<input formControlName="phone"  type="text" class="form-control">
 														<span class="material-input"></span></div>
 													<!--</div>-->
 												</div>
+												<div class="input-group">
+													<span class="input-group-addon">
+														<i class="material-icons">room</i>
+													</span>
+													<div class="form-group label-floating is-empty">
+														
+														<input type="text" id="area" formControlName="area" class="form-control"  placeholder="Enter your base location" (setAddress)="getAddress($event)" [options]="{componentRestrictions: { country: 'IN' }}"  ng2-google-place-autocomplete />
+														<span class="material-input"></span></div>
+
+												</div>
+												
+
 											</div>
 										</div>
+
 
 										<div class="col-am-10">
 											<div class="col-sm-6">
 												<!--<div style="width: 100%; float: right;">-->
-												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="material-icons">add_box</i>
-													</span>
-													<div class="form-group label-floating is-empty">
-														<label class="control-label">Speciality</label>
-														<input name="name" type="text" style="width: 70%;" class="form-control">
-														<span class="material-input"></span></div>
-													<!--</div>-->
-												</div>
+												
 											</div>
 										</div>
 
 										<div class="col-am-10">
 											<div class="col-sm-6">
 												<!--<div style="width: 100%; float: left;">-->
-												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="material-icons">perm_contact_calendar</i>
-													</span>
-													<div class="form-group label-floating is-empty">
-														<label class="control-label">Medical Registration Number</label>
-														<input name="name" type="text" style="width: 70%;" class="form-control">
-														<span class="material-input"></span></div>
-													<!--</div>-->
-												</div>
+												
 											</div>
 										</div>
 
 										<div class="col-am-10">
 											<div class="col-sm-6">
 												<!--<div style="width: 100%; float: right;">-->
-												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="material-icons">room</i>
-													</span>
-													<div class="form-group label-floating is-empty">
-														<label class="control-label">City</label>
-														<input name="name" type="text" style="width: 70%;" class="form-control">
-														<span class="material-input"></span></div>
-													<!--</div>-->
-												</div>
+												
 											</div>
 										</div>
 
 										<div class="col-am-10">
 											<div class="col-sm-6">
-												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="material-icons">account_balance</i>
-													</span>
-													<div class="form-group label-floating is-empty">
-														<label class="control-label">Area</label>
-														<input name="name" type="text" style="width: 70%;" class="form-control">
-														<span class="material-input"></span></div>
-
-												</div>
+												
 											</div>
 										</div>
 
@@ -158,7 +127,7 @@
 									<div class="row">
 										<div class="col-sm-10 col-sm-offset-1">
 											<div class="col-sm-4">
-												<div class="choice" data-toggle="wizard-checkbox">
+												<div class="choice" (click)="updateType('clinic')" data-toggle="wizard-checkbox">
 													<input type="checkbox" name="jobb" value="Design">
 													<div class="icon">
 														<i class="material-icons">domain</i>
@@ -167,7 +136,7 @@
 												</div>
 											</div>
 											<div class="col-sm-4">
-												<div class="choice" data-toggle="wizard-checkbox">
+												<div class="choice" (click)="updateType('doctor')" data-toggle="wizard-checkbox">
 													<input type="checkbox" name="jobb" value="Code">
 													<div class="icon">
 														<i class="material-icons">person_outline</i>
@@ -176,7 +145,7 @@
 												</div>
 											</div>
 											<div class="col-sm-4">
-												<div class="choice" data-toggle="wizard-checkbox">
+												<div class="choice" (click)="updateType('both')" data-toggle="wizard-checkbox">
 													<input type="checkbox" name="jobb" value="Develop">
 													<div class="icon">
 														<i class="material-icons">local_hospital</i>
@@ -190,123 +159,233 @@
 								<div class="tab-pane" id="education">
 
 
-									<div class="col-am-10">
-										<div class="col-sm-6">
+									<div class="col-sm-10 col-sm-offset-1">
+										<div class="row">
+										<div class="col-sm-12">
+										<div class="input-group">
+													<span class="input-group-addon">
+														<i class="material-icons">add_box</i>
+													</span>
+													<div class="form-group label-floating is-empty">
+														 <rl-tag-input  formControlName="speciality" class="tagsinput"  placeholder="Add your specialities" theme="bootstrap" autocomplete="true" [autocompleteItems]="medSpecialities"></rl-tag-input>
+														<span class="material-input"></span></div>
+													<!--</div>-->
+												</div>
+										</div>
+												<div class="col-sm-5">
+												<div class="input-group">
+													<span class="input-group-addon">
+														<i class="material-icons">perm_contact_calendar</i>
+													</span>
+													<div class="form-group label-floating is-empty">
+														<label class="control-label">Registration Number</label>
+														<input name="name" type="text" class="form-control">
+														<span class="material-input"></span></div>
+													<!--</div>-->
+												</div>
+										</div>
+										</div>
+									<h4>Provide details of your qualifications</h4>
+												<div class="row" *ngFor="let item of registrationForm.controls.education.controls; let i=index">
+													 <div [formGroupName]="i">
+										<div class="col-sm-4">
 											<div class="input-group">
 												<span class="input-group-addon">
 														<i class="material-icons">school</i>
 													</span>
-												<div class="form-group label-floating is-empty">
-													<label class="control-label">Graduation</label>
-													<input name="name" type="text" style="width: 70%;" class="form-control">
-													<span class="material-input"></span></div>
-											</div>
-										</div>
-									</div>
-
-
-									<div class="col-am-10">
-										<div class="col-sm-6">
-											<div class="input-group">
-												<span class="input-group-addon">
-														<i class="material-icons">event_note</i>
-													</span>
-												<div class="form-group label-floating is-empty">
+												<div class="form-group">
 													<label class="control-label">Degree</label>
-													<input name="name" type="text" style="width: 70%;" class="form-control">
+													<input formControlName="degree" placeholder="E.g., MBBS" type="text" class="form-control">
 													<span class="material-input"></span></div>
 											</div>
 										</div>
-									</div>
-
-
-									<div class="col-am-10">
-										<div class="col-sm-6">
+										<div class="col-sm-4">
 											<div class="input-group">
 												<span class="input-group-addon">
 														<i class="material-icons">location_city</i>
 													</span>
-												<div class="form-group label-floating is-empty">
+												<div class="form-group ">
 													<label class="control-label">Institute</label>
-													<input name="name" type="text" style="width: 70%;" class="form-control">
+													<input formControlName="institute" placeholder="E.g., AIIMS" type="text" class="form-control">
 													<span class="material-input"></span></div>
 											</div>
 										</div>
-									</div>
-
-
-									<div class="col-am-10">
-										<div class="col-sm-6">
+										<div class="col-sm-4">
 											<div class="input-group">
 												<span class="input-group-addon">
 												
 														<i class="material-icons">insert_invitation</i>
 													</span>
-												<div class="form-group label-floating is-empty">
+												<div class="form-group">
 													<label class="control-label">Completion Year</label>
-													<input name="name" type="text" style="width: 70%;" class="form-control">
+													<input formControlName="completionYear" type="date" placeholder="Completion" class="form-control">
 													<span class="material-input"></span></div>
 											</div>
 										</div>
+												</div>
+												</div>
+									
+									<div class="col-md-4 ">
+										<button [ngClass]="{'hide': itemAdded2}" type="button" (click)="addEducation(registrationForm)" id="addcp" class="btn btn-round btn-default">+ add qualifications</button>
 									</div>
-									<div class="col-md-4">
-										<button [ngClass]="{'hide': itemAdded2}" type="button" (click)="addMedicine()" id="addcp" class="btn btn-round btn-default">+ add more</button>
 									</div>
 
 								</div>
 								<div class="tab-pane" id="experience">
 
-									<div class="col-sm-10 col-sm-offset-1">
-
+									<div class="col-sm-12">
+										<h4>Provide details of your experience</h4>
+										<div class="row" *ngFor="let item of registrationForm.controls.experience.controls; let i=index">
+													 <div [formGroupName]="i">
 										<!--<div class="col-am-10">-->
+											<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">
 														<i class="material-icons">local_library</i>
 													</span>
-											<div class="form-group label-floating is-empty">
+											<div class="form-group">
 												<label class="control-label">Designation/Role</label>
-												<input name="name" type="text" style="width: 70%;" class="form-control">
+												<input formControlName="role" type="text" placeholder="Head of Fetal Medicine" class="form-control">
 												<span class="material-input"></span></div>
 										</div>
-
+											</div>
+											<div class="col-sm-3">
 										<div class="input-group">
 											<span class="input-group-addon">
 														<i class="material-icons">rate_review</i>
 													</span>
-											<div class="form-group label-floating is-empty">
-												<label class="control-label">From-To</label>
-												<input name="name" type="text" style="width: 70%;" class="form-control">
+											<div class="form-group">
+												<label class="control-label">Organization</label>
+												<input formControlName="org" type="text" placeholder="Apollo Hospitals, Bannerghatta" class="form-control">
 												<span class="material-input"></span></div>
 										</div>
+											</div>
 										<!--</div>-->
 
 										<!--<div class="col-am-10">-->
+											<div class="col-sm-3">
 										<div class="input-group">
-											<span class="input-group-addon">
+											<!--<span class="input-group-addon">
 														<i class="material-icons">add_to_photos</i>
-													</span>
-											<div class="form-group label-floating is-empty">
-												<label class="control-label">Add Experience</label>
-												<input name="name" type="text" style="width: 70%;" class="form-control">
+													</span>-->
+											<div class="form-group">
+												<label class="control-label">From date</label>
+												<input formControlName="fromYear" type="date" class="form-control">
 												<span class="material-input"></span></div>
 										</div>
+											</div>
+											<div class="col-sm-3">
+										<div class="input-group">
+											<!--<span class="input-group-addon">
+														<i class="material-icons">add_to_photos</i>
+													</span>-->
+											<div class="form-group">
+												<label class="control-label">To date</label>
+												<input formControlName="toYear" type="date" class="form-control">
+												<span class="material-input"></span></div>
+										</div>
+											</div>
+													 </div>
+										</div>
 										<div class="col-md-4">
-											<button [ngClass]="{'hide': itemAdded2}" type="button" (click)="addMedicine()" id="addcp" class="btn btn-round btn-default">+ add experience</button>
+											<button [ngClass]="{'hide': itemAdded2}" type="button" (click)="addExperience(registrationForm)" id="addcp" class="btn btn-round btn-default">+ add experience</button>
+										</div>
+									</div>
+									<div class="col-sm-12">
+										<h4>Provide sample cases you have worked on</h4>
+										<div class="row" *ngFor="let item of registrationForm.controls.cases.controls; let i=index">
+													 <div [formGroupName]="i">
+										<!--<div class="col-am-10">-->
+											<div class="col-sm-6">
+										<div class="input-group">
+											<span class="input-group-addon">
+														<i class="material-icons">local_hospital</i>
+													</span>
+											<div class="form-group">
+												<label class="control-label">Case Brief</label>
+												<input formControlName="role" type="text" placeholder="Provide a brief of the case" class="form-control">
+												<span class="material-input"></span></div>
+										</div>
+											</div>
+											<div class="col-sm-6">
+										<div class="input-group">
+											<span class="input-group-addon">
+														<i class="material-icons">assignment_ind</i>
+													</span>
+											<div class="form-group">
+												<label class="control-label">Patient Background</label>
+												<input formControlName="patientBrief" type="text" placeholder="Provide a brief about the patient" class="form-control">
+												<span class="material-input"></span></div>
+										</div>
+											</div>
+										<!--</div>-->
+
+										<!--<div class="col-am-10">-->
+											<div class="col-sm-12">
+												<div class="form-group form-file-upload is-empty is-fileinput">
+								<input type="file" id="inputFile3" multiple="">
+								<div class="input-group">
+									<input type="text" readonly="" class="form-control" formControlName="images" placeholder="Upload case related files/ images">
+									<span class="input-group-btn input-group-s">
+										<button type="button" class="btn btn-just-icon btn-round btn-info">
+											<i class="material-icons">layers</i>
+										</button>
+									</span>
+								</div>
+							<span class="material-input"></span></div>
+										<!--<div class="input-group">
+											<!--<span class="input-group-addon">
+														<i class="material-icons">add_to_photos</i>
+													</span>-->
+											<!--<div class="form-group">
+												<label class="control-label">From date</label>
+												<input formControlName="fromYear" type="date" class="form-control">
+												<span class="material-input"></span></div>
+										</div>-->
+											</div>
+											<!--<div class="col-sm-3">
+										<div class="input-group">
+											<!--<span class="input-group-addon">
+														<i class="material-icons">add_to_photos</i>
+													</span>-->
+											<!--<div class="form-group">
+												<label class="control-label">To date</label>
+												<input formControlName="toYear" type="date" class="form-control">
+												<span class="material-input"></span></div>
+										</div>
+											</div>-->
+													 </div>
+										</div>
+										<div class="col-md-4">
+											<button [ngClass]="{'hide': itemAdded2}" type="button" (click)="addCases(registrationForm)" id="addcp" class="btn btn-round btn-default">+ add cases</button>
 										</div>
 									</div>
 
 								</div>
 								<div class="tab-pane" id="facility">
 
-									<div class="col-am-10">
+									<div class="col-sm-10 col-sm-offset-1">
+										<div class="col-sm-6">
 										<div class="input-group">
 											<span class="input-group-addon">
 														<i class="material-icons">person</i>
 													</span>
 											<div class="form-group label-floating is-empty">
-												<label class="control-label">Name</label>
-												<input name="name" type="text" style="width: 70%;" class="form-control">
+												<label class="control-label">Name of your facility</label>
+												<input formControlName="facilityName" type="text" class="form-control">
 												<span class="material-input"></span></div>
+										</div>
+										</div>
+										<div class="col-sm-6">
+										<div class="input-group">
+											<span class="input-group-addon">
+														<i class="material-icons">local_printshop</i>
+													</span>
+											<div class="form-group label-floating is-empty">
+												<!--<label class="control-label">Area of Facility</label>-->
+												<input type="text" id="area" formControlName="facilityArea" class="form-control"  placeholder="Area of Facility" (setAddress)="getAddress($event)" [options]="{componentRestrictions: { country: 'IN' }}"  ng2-google-place-autocomplete />
+												<span class="material-input"></span></div>
+										</div>
 										</div>
 										<!--</div>-->
 
@@ -316,41 +395,24 @@
 														<i class="material-icons">local_post_office</i>
 													</span>
 											<div class="form-group label-floating is-empty">
-												<label class="control-label">Address</label>
-												<input name="name" type="text" style="width: 70%;" class="form-control">
+												<label class="control-label">Address of your facility</label>
+												<textarea formControlName="facilityAddress" type="text" class="form-control"></textarea>
 												<span class="material-input"></span></div>
 										</div>
 										<!--</div>-->
 
 										<!--<div class="col-am-10">-->
-										<div class="input-group">
-											<span class="input-group-addon">
-														<i class="material-icons">local_printshop</i>
-													</span>
-											<div class="form-group label-floating is-empty">
-												<label class="control-label">Description</label>
-												<input name="name" type="text" style="width: 70%;" class="form-control">
-												<span class="material-input"></span></div>
-										</div>
+										
 										<!--</div>-->
 
 										<div class="input-group">
-											<span class="input-group-addon">
-														<i class="material-icons">photo_camera</i>
-													</span>
-											<div class="form-group label-floating is-empty">
-												<label class="control-label">Images of Facility</label>
-												<input name="name" type="text" style="width: 70%;" class="form-control">
-												<div>
-													<span class="btn btn-raised btn-round btn-default btn-file">
-										<span class="fileinput-new">Select image</span>
-													<span class="fileinput-exists">Change</span>
-													<input type="file" name="...">
-													</span>
-													<a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
-												</div>
-												<span class="material-input"></span></div>
-										</div>
+									<input type="text" readonly="" class="form-control" formControlName="facilityImages" placeholder="Upload images of the facility">
+									<span class="input-group-btn input-group-s">
+										<button type="button" class="btn btn-just-icon btn-round btn-info">
+											<i class="material-icons">layers</i>
+										</button>
+									</span>
+								</div>
 
 									</div>
 
@@ -389,9 +451,9 @@
 	<!--  big container -->
 
 	<div class="footer">
-		<div class="container text-center">
+		<!--<div class="container text-center">
 			Made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Cureyo Team</a>
 			<!--<a href="http://www.creative-tim.com/product/material-bootstrap-wizard">here.</a>-->
-		</div>
+		<!--</div>-->
 	</div>
 </div>

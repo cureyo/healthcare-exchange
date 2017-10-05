@@ -56,6 +56,7 @@ export const firebaseConfig = {
     ListingPageComponent,
     HeaderComponent,
     PostCaseComponent,
+    
     // TagInputDropdown,
     // TagInputComponent,
     // TagInputModule
