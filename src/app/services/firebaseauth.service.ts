@@ -9,6 +9,7 @@ import { AppConfig } from "../config/app.config";
 export class AuthService {
 
     users: FirebaseListObservable<any[]>;
+    regUser: FirebaseListObservable<any[]>;
     userData: any;
 
   private db = AppConfig.database;
@@ -16,6 +17,7 @@ export class AuthService {
    constructor(public af: AngularFire, public firebase: FirebaseAuth, private router: Router) {
 
     this.users = af.database.list(this.db.doctors);
+    this.regUser = af.database.list(this.db.userNames);
    
   }//constructor
 
@@ -159,5 +161,10 @@ export class AuthService {
       }//res
     );
   }//_fetchUser
+  
+public _saveUserNames(UserDetails) {
+    const carePaths = this.af.database.list(this.db.regUser);
+    return carePaths.push(UserDetails);
+  }
 
 }

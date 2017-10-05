@@ -24,8 +24,7 @@ exports.AppConfig = {
     },
     database: {
         doctors: 'DoctorsTable/',
-        
-        users: environment_1.environment.envName + '/UserTable/',   
+        userNames: environment_1.environment.envName + '/UserTable/',    
         userIds: environment_1.environment.envName + '/UserIds/'
     }
 };
