@@ -41,16 +41,16 @@ export class RegistrationPageComponent implements OnInit {
       speciality: this._fb.array([]),
       phone: ['', Validators.required],
       medicalNumber: ['', Validators.required],
-      city: ['', Validators.required],
+      // city: ['', Validators.required],
       area: ['', Validators.required],
       education: this._fb.array([
         this.initializeEducation(null, null, null)
       ]),
       experience: this._fb.array([
-        this.initializeExperience(null, null, null,null)
+        this.initializeExperience(null, null, null, null)
       ]),
       cases: this._fb.array([
-        this.initializeCases(null, null, null,null)
+        this.initializeCases(null, null, null, null)
       ]),
       facilityName: ['', Validators.required],
       facilityAddress: ['', Validators.required],
@@ -60,20 +60,23 @@ export class RegistrationPageComponent implements OnInit {
 
     this.formReady = true;
 
-   this.getMedicalSpecialities();
-      }
- getMedicalSpecialities() {
-        this._authService._getMedicalSpecialities()
-            .subscribe(
-            medData => {
-                this.medSpecialities = medData;
-                console.log("this.medSpecialities", this.medSpecialities)
-            }
-            )
-    }
+    this.getMedicalSpecialities();
 
-  initializeEducation(degree, institute,completionYear ) {
-    console.log("initializeEducation", degree, institute,completionYear);
+
+  }
+  getMedicalSpecialities() {
+    this._authService._getMedicalSpecialities()
+      .subscribe(
+      medData => {
+        this.medSpecialities = medData;
+        console.log("this.medSpecialities", this.medSpecialities)
+        
+      }
+      )
+  }
+
+  initializeEducation(degree, institute, completionYear) {
+    console.log("initializeEducation", degree, institute, completionYear);
     let control = this._fb.group({
       degree: [degree, Validators.required],
       institute: [institute, Validators.required],
@@ -86,19 +89,19 @@ export class RegistrationPageComponent implements OnInit {
     control.push(this.initializeEducation(null, null, null));
 
   }
-    addExperience(form) {
+  addExperience(form) {
     const control = <FormArray>this.registrationForm.controls['experience'];
     control.push(this.initializeExperience(null, null, null, null));
 
   }
-    addCases(form) {
+  addCases(form) {
     const control = <FormArray>this.registrationForm.controls['cases'];
     control.push(this.initializeCases(null, null, null, null));
 
   }
 
-   initializeExperience(role, org,fromYear, toYear ) {
-    console.log("initializeExperience", role, org,fromYear, toYear );
+  initializeExperience(role, org, fromYear, toYear) {
+    console.log("initializeExperience", role, org, fromYear, toYear);
     let control = this._fb.group({
       role: [role, Validators.required],
       org: [org, Validators.required],
@@ -107,8 +110,8 @@ export class RegistrationPageComponent implements OnInit {
     });
     return control;
   }
-  initializeCases(brief, detail,images, patientBrief ) {
-    console.log("initializeCases", brief, detail,images, patientBrief  );
+  initializeCases(brief, detail, images, patientBrief) {
+    console.log("initializeCases", brief, detail, images, patientBrief);
     let control = this._fb.group({
       brief: [brief, Validators.required],
       images: [images, Validators.required],
@@ -127,62 +130,65 @@ export class RegistrationPageComponent implements OnInit {
       this.isDoctor = !this.isDoctor;
     }
   }
-    getAddress(place:Event){
-    this.clinicAddress=place;
-    console.log("this is the places",this.clinicAddress);
+  getAddress(place: Event) {
+    this.clinicAddress = place;
+    console.log("this is the places", this.clinicAddress);
   }
 
- onSubmit(model) {
-            console.log(model , " hi ");
+  onSubmit(model) {
+    console.log(model, " hi ");
+    this._authService._getUser().subscribe(userData => {
+      console.log("user auth data", userData);
+      this._authService._saveUser(userData.user.uid, model)
+        .then(
+        data => {
+          console.log(data);
+          this.router.navigate(['listings']);
 
-            this._authService._saveUserNames(model['name'])
-      .subscribe(
-      data => {
-        console.log(data);
-       
-      },
-      error => console.log(error)
-      );
-            // this._authService._getCarePathNames(model['name'])
-            // .subscribe(
-            //           data => {
-            //                 //console.log(data);
-            //                 if (data[0]) {
-            //                      alert("This Care Path already exisits. Please save using another name");
-            //                  }
-            //                 else {
-            //                       this._authService._saveCarePathway(model, model['name'])
-            //                       .then(data => {
-            //                             //console.log(data.path['o'][2]);
-            //                             this._authService._saveCarePathName(model['name'], data.path['o'][2]);
-            //                                   this.carePathwayForm.reset();
-            //                                   this.carePathwayForm = this._fb.group({
-            //                                         name: ['', Validators.required],
-            //                                         description: ['', Validators.required],
-            //                                         duration: ['', Validators.required],
-            //                                         checkPoints: this._fb.array([
-            //                                         this.initCheckPoints()
-            //                                         ])
-            //                                   });
-            //                                   $.notify({
-            //                                       icon: "notifications",
-            //                                       message: "Thank You " + model['name'] + " for registering."
+        },
+        error => console.log(error)
+        );
+    });
+    // this._authService._getCarePathNames(model['name'])
+    // .subscribe(
+    //           data => {
+    //                 //console.log(data);
+    //                 if (data[0]) {
+    //                      alert("This Care Path already exisits. Please save using another name");
+    //                  }
+    //                 else {
+    //                       this._authService._saveCarePathway(model, model['name'])
+    //                       .then(data => {
+    //                             //console.log(data.path['o'][2]);
+    //                             this._authService._saveCarePathName(model['name'], data.path['o'][2]);
+    //                                   this.carePathwayForm.reset();
+    //                                   this.carePathwayForm = this._fb.group({
+    //                                         name: ['', Validators.required],
+    //                                         description: ['', Validators.required],
+    //                                         duration: ['', Validators.required],
+    //                                         checkPoints: this._fb.array([
+    //                                         this.initCheckPoints()
+    //                                         ])
+    //                                   });
+    //                                   $.notify({
+    //                                       icon: "notifications",
+    //                                       message: "Thank You " + model['name'] + " for registering."
 
-            //                                   }, {
-            //                                       type: 'cureyo',
-            //                                       timer: 4000,
-            //                                       placement: {
-            //                                       from: 'top',
-            //                                       align: 'right'
-            //                                   }
-            //                             });
+    //                                   }, {
+    //                                       type: 'cureyo',
+    //                                       timer: 4000,
+    //                                       placement: {
+    //                                       from: 'top',
+    //                                       align: 'right'
+    //                                   }
+    //                             });
 
-            //                       });
-            //                 }
+    //                       });
+    //                 }
 
-            //           }
-            // )
+    //           }
+    // )
 
   }
-    
+
 }    

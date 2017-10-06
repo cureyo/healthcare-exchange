@@ -168,7 +168,7 @@
 														<i class="material-icons">add_box</i>
 													</span>
 													<div class="form-group label-floating is-empty">
-														 <rl-tag-input  formControlName="speciality" class="tagsinput"  placeholder="Add your specialities" theme="bootstrap" autocomplete="true" [autocompleteItems]="medSpecialities"></rl-tag-input>
+														 <rl-tag-input   class="tagsinput"  placeholder="Add your specialities" theme="bootstrap" autocomplete="true" [autocompleteItems]="medSpecialities"></rl-tag-input>
 														<span class="material-input"></span></div>
 													<!--</div>-->
 												</div>
@@ -187,6 +187,7 @@
 										</div>
 										</div>
 									<h4>Provide details of your qualifications</h4>
+									<div formArrayName="education">
 												<div class="row" *ngFor="let item of registrationForm.controls.education.controls; let i=index">
 													 <div [formGroupName]="i">
 										<div class="col-sm-4">
@@ -225,6 +226,7 @@
 										</div>
 												</div>
 												</div>
+									</div>
 									
 									<div class="col-md-4 ">
 										<button [ngClass]="{'hide': itemAdded2}" type="button" (click)="addEducation(registrationForm)" id="addcp" class="btn btn-round btn-default">+ add qualifications</button>
@@ -236,6 +238,7 @@
 
 									<div class="col-sm-12">
 										<h4>Provide details of your experience</h4>
+										<div formArrayName="experience">
 										<div class="row" *ngFor="let item of registrationForm.controls.experience.controls; let i=index">
 													 <div [formGroupName]="i">
 										<!--<div class="col-am-10">-->
@@ -288,12 +291,14 @@
 											</div>
 													 </div>
 										</div>
+										</div>
 										<div class="col-md-4">
 											<button [ngClass]="{'hide': itemAdded2}" type="button" (click)="addExperience(registrationForm)" id="addcp" class="btn btn-round btn-default">+ add experience</button>
 										</div>
 									</div>
 									<div class="col-sm-12">
 										<h4>Provide sample cases you have worked on</h4>
+										<div formArrayName="cases">
 										<div class="row" *ngFor="let item of registrationForm.controls.cases.controls; let i=index">
 													 <div [formGroupName]="i">
 										<!--<div class="col-am-10">-->
@@ -304,7 +309,7 @@
 													</span>
 											<div class="form-group">
 												<label class="control-label">Case Brief</label>
-												<input formControlName="role" type="text" placeholder="Provide a brief of the case" class="form-control">
+												<input formControlName="brief" type="text" placeholder="Provide a brief of the case" class="form-control">
 												<span class="material-input"></span></div>
 										</div>
 											</div>
@@ -338,6 +343,7 @@
 											</div>
 											
 													 </div>
+										</div>
 										</div>
 										<div class="col-md-4">
 											<button [ngClass]="{'hide': itemAdded2}" type="button" (click)="addCases(registrationForm)" id="addcp" class="btn btn-round btn-default">+ add cases</button>

@@ -23,8 +23,8 @@ export const AppConfig = {
         SEARCH_API_KEY: 'AIzaSyAD6g1Bs2ZRmRFqHP0QIrMViadzHr6BrhM'
     },
     database: {
-        doctors: environment.envName + '/DoctorTable/',
-        clinics: environment.envName + '/ClinicTable/',
+        users: environment.envName + '/Users/',
+        // clinics: environment.envName + '/ClinicTable/',
         MedicalSpecialities:  '/MedicalSpecialities/'
        
     }

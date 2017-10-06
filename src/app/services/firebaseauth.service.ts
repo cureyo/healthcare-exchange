@@ -16,8 +16,8 @@ export class AuthService {
 
    constructor(public af: AngularFire, public firebase: FirebaseAuth, private router: Router) {
 
-    this.users = af.database.list(this.db.doctors);
-    this.regUser = af.database.list(this.db.userNames);
+    // this.users = af.database.list(this.db.doctors);
+    // this.regUser = af.database.list(this.db.userNames);
    
   }//constructor
 
@@ -35,11 +35,11 @@ export class AuthService {
 
   }//login
 
-  public _saveUser(formData) {
+  public _saveUser(uid, formData) {
     console.log("formdata");
     console.log(formData);
-    console.log(formData.specializations);
-    const db = this.af.database.object(this.db.doctors + formData.authUID);
+    // console.log(formData.specializations);
+    const db = this.af.database.object(this.db.users + uid);
     return db.set(formData)
 
   }//_saveUser
@@ -148,7 +148,7 @@ export class AuthService {
 
   public _fetchDocUser(uid) {
     //console.log(this.db.docUsers + uid);
-    return this.af.database.object(this.db.doctors + uid).map(
+    return this.af.database.object(this.db.users + uid).map(
       res => {
         //console.log(res);
         if (!res.firstName) {
@@ -162,9 +162,9 @@ export class AuthService {
     );
   }//_fetchUser
   
-public _saveUserNames(UserDetails) {
-    const carePaths = this.af.database.list(this.db.regUser);
-    return carePaths.push(UserDetails);
-  }
+// public _saveUserNames(UserDetails) {
+//     const carePaths = this.af.database.list(this.db.regUser);
+//     return carePaths.push(UserDetails);
+//   }
 
 }
