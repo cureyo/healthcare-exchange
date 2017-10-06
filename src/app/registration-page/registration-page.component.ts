@@ -149,45 +149,6 @@ export class RegistrationPageComponent implements OnInit {
         error => console.log(error)
         );
     });
-    // this._authService._getCarePathNames(model['name'])
-    // .subscribe(
-    //           data => {
-    //                 //console.log(data);
-    //                 if (data[0]) {
-    //                      alert("This Care Path already exisits. Please save using another name");
-    //                  }
-    //                 else {
-    //                       this._authService._saveCarePathway(model, model['name'])
-    //                       .then(data => {
-    //                             //console.log(data.path['o'][2]);
-    //                             this._authService._saveCarePathName(model['name'], data.path['o'][2]);
-    //                                   this.carePathwayForm.reset();
-    //                                   this.carePathwayForm = this._fb.group({
-    //                                         name: ['', Validators.required],
-    //                                         description: ['', Validators.required],
-    //                                         duration: ['', Validators.required],
-    //                                         checkPoints: this._fb.array([
-    //                                         this.initCheckPoints()
-    //                                         ])
-    //                                   });
-    //                                   $.notify({
-    //                                       icon: "notifications",
-    //                                       message: "Thank You " + model['name'] + " for registering."
-
-    //                                   }, {
-    //                                       type: 'cureyo',
-    //                                       timer: 4000,
-    //                                       placement: {
-    //                                       from: 'top',
-    //                                       align: 'right'
-    //                                   }
-    //                             });
-
-    //                       });
-    //                 }
-
-    //           }
-    // )
 
   }
 
