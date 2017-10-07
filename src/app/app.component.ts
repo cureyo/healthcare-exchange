@@ -64,7 +64,7 @@ ngOnInit() {
             .subscribe(res => {
               //console.log("from login: ");
               console.log(res);
-              if (res.hasOwnProperty('authUID')) {
+              if (res.hasOwnProperty('fullName')) {
                 // this.activatedRoute.queryParams
                 //   .subscribe(params => {
                 //       //console.log("query parameters");

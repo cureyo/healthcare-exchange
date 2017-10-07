@@ -21,8 +21,9 @@ export class RegistrationPageComponent implements OnInit {
   private isDoctor: boolean = true;
   private formReady: boolean = false;
   private clinicAddress: any;
+  private userAddress: any;
   private medSpecialities: any;
-
+  private specs: any = [];
   constructor(
     private _fb: FormBuilder,
     private _authService: AuthService,
@@ -130,13 +131,24 @@ export class RegistrationPageComponent implements OnInit {
       this.isDoctor = !this.isDoctor;
     }
   }
-  getAddress(place: Event) {
-    this.clinicAddress = place;
-    console.log("this is the places", this.clinicAddress);
+  getAddress1(place: Event) {
+    this.userAddress = place;
+    delete this.userAddress.geometry;
+    delete this.userAddress.photos;
+    console.log("this is the places 1", this.userAddress);
   }
-
+getAddress2(place: Event) {
+    this.clinicAddress = place;
+    delete this.clinicAddress.geometry;
+    delete this.clinicAddress.photos;
+    console.log("this is the places 2", this.clinicAddress);
+  }
   onSubmit(model) {
     console.log(model, " hi ");
+    model['facilityArea'] = this.clinicAddress;
+    model['area'] = this.userAddress;
+    model['speciality'] = this.specs;
+    console.log(model);
     this._authService._getUser().subscribe(userData => {
       console.log("user auth data", userData);
       this._authService._saveUser(userData.user.uid, model)

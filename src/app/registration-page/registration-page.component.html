@@ -1,416 +1,413 @@
-<form [formGroup]="registrationForm" (keydown.enter)="$event.preventDefault()" (ngSubmit)="onSubmit(registrationForm.value)"
- class="form">
-
-	<div class="image-container set-full-height" style="background-image: url('http://senhospitalagra.com/images/ps.jpg')">
-		<!--   Creative Tim Branding   -->
-
-
-
-		<!--   Big container   -->
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-8 col-sm-offset-2">
-
-					<!--      Wizard container        -->
-					<div class="wizard-container">
-						<div *ngIf="formReady" class="card wizard-card" data-color="red" id="wizard">
-							<form [formGroup]="registrationForm" action="" method="">
-								<!--        You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"             -->
-
-								<div class="wizard-header">
-									<h3 class="wizard-title">
-										User Registration Form
-									</h3>
-									<h5>This information will let us know more about you.</h5>
-								</div>
-								<div class="wizard-navigation">
-									<ul class="nav nav-pills nav-pills-icons" role="tablist">
-										<li><a href="#details" role="tab" data-toggle="tab">Basic Details</a></li>
-										<li><a href="#engage" role="tab" data-toggle="tab">Engagement Type</a></li>
-										<li><a href="#education" role="tab" data-toggle="tab">Education</a></li>
-										<li><a href="#experience" role="tab" data-toggle="tab">Experience</a></li>
-										<li><a href="#facility" role="tab" data-toggle="tab">Facility Details</a></li>
-									</ul>
-								</div>
-								<!--<div class="moving-tab" style="width: 187.5px; transform: translate3d(-8px, 0px, 0px); transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1);">Location</div>-->
-
-
-								<div class="tab-content">
-									<div class="tab-pane" id="details">
-										<div class="row">
-											<div class="col-sm-12">
-												<h4 class="info-text"><b> Let's start with the basic details.</b></h4>
-											</div>
-
-											<div class="col-sm-10 col-md-offset-1">
-												<div class="col-sm-6">
-
-													<div class="input-group">
-														<span class="input-group-addon">
-														<i class="material-icons">account_box</i>
-													</span>
-														<div class="form-group label-floating is-empty">
-															<label class="control-label">Full Name</label>
-															<input formControlName="fullName" type="text" class="form-control">
-															<span class="material-input"></span></div>
-
-													</div>
-													<div class="input-group">
-														<span class="input-group-addon">
-														<i class="material-icons">email</i>
-													</span>
-														<div class="form-group label-floating is-empty">
-															<label class="control-label">Your Email</label>
-															<input formControlName="email" type="text" class="form-control">
-															<span class="material-input"></span></div>
-													</div>
-
-
-												</div>
-
-												<div class="col-sm-6">
-													<div class="input-group">
-														<span class="input-group-addon">
-														<i class="material-icons">phone</i>
-													</span>
-														<div class="form-group label-floating is-empty">
-															<label class="control-label">Phone Number</label>
-															<input formControlName="phone" type="text" class="form-control">
-															<span class="material-input"></span></div>
-														<!--</div>-->
-													</div>
-													<div class="input-group">
-														<span class="input-group-addon">
-														<i class="material-icons">room</i>
-													</span>
-														<div class="form-group label-floating is-empty">
-
-															<input type="text" id="area" formControlName="area" class="form-control" placeholder="Enter your base location" (setAddress)="getAddress($event)"
-															 [options]="{componentRestrictions: { country: 'IN' }}" ng2-google-place-autocomplete />
-															<span class="material-input"></span></div>
-
-													</div>
-												</div>
-											</div>
-
-
-										</div>
-									</div>
-									<div class="tab-pane" id="engage">
-										<h4 class="info-text">What describes you best? </h4>
-										<div class="row">
-											<div class="col-sm-10 col-sm-offset-1">
-												<div class="col-sm-4">
-													<div class="choice" (click)="updateType('clinic')" data-toggle="wizard-checkbox">
-														<input type="checkbox" name="jobb" value="Design">
-														<div class="icon">
-															<i class="material-icons">domain</i>
-														</div>
-														<h6>Facility Owner</h6>
-													</div>
-												</div>
-												<div class="col-sm-4">
-													<div class="choice" (click)="updateType('doctor')" data-toggle="wizard-checkbox">
-														<input type="checkbox" name="jobb" value="Code">
-														<div class="icon">
-															<i class="material-icons">person_outline</i>
-														</div>
-														<h6>Healthcare Professional</h6>
-													</div>
-												</div>
-												<div class="col-sm-4">
-													<div class="choice" (click)="updateType('both')" data-toggle="wizard-checkbox">
-														<input type="checkbox" name="jobb" value="Develop">
-														<div class="icon">
-															<i class="material-icons">local_hospital</i>
-														</div>
-														<h6>Both</h6>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="tab-pane" id="education">
-
-										<div class="row">
-										<div class="col-sm-10 col-sm-offset-1">
-											<div class="row">
-												<div class="col-sm-12">
-													<div class="input-group">
-														<span class="input-group-addon">
-														<i class="material-icons">add_box</i>
-													</span>
-														<div class="form-group label-floating is-empty">
-															<rl-tag-input class="tagsinput" placeholder="Add your specialities" theme="bootstrap" autocomplete="true" [autocompleteItems]="medSpecialities"></rl-tag-input>
-															<span class="material-input"></span></div>
-														
-													</div>
-												</div>
-												<div class="col-sm-5">
-													<div class="input-group">
-														<span class="input-group-addon">
-														<i class="material-icons">perm_contact_calendar</i>
-													</span>
-														<div class="form-group label-floating is-empty">
-															<label class="control-label">Registration Number</label>
-															<input name="name" type="text" class="form-control">
-															<span class="material-input"></span></div>
-														
-													</div>
-												</div>
-											</div>
-											<h4>Provide details of your qualifications</h4>
-											<div formArrayName="education">
-												<div class="row" *ngFor="let item of registrationForm.controls.education.controls; let i=index">
-													<div [formGroupName]="i">
-														<div class="col-sm-4">
-															<div class="input-group">
-																<span class="input-group-addon">
-														<i class="material-icons">school</i>
-													</span>
-																<div class="form-group">
-																	<label class="control-label">Degree</label>
-																	<input formControlName="degree" placeholder="E.g., MBBS" type="text" class="form-control">
-																	<span class="material-input"></span></div>
-															</div>
-														</div>
-														<div class="col-sm-4">
-															<div class="input-group">
-																<span class="input-group-addon">
-														<i class="material-icons">location_city</i>
-													</span>
-																<div class="form-group ">
-																	<label class="control-label">Institute</label>
-																	<input formControlName="institute" placeholder="E.g., AIIMS" type="text" class="form-control">
-																	<span class="material-input"></span></div>
-															</div>
-														</div>
-														<div class="col-sm-4">
-															<div class="input-group">
-																<span class="input-group-addon">
-												
-														<i class="material-icons">insert_invitation</i>
-													</span>
-																<div class="form-group">
-																	<label class="control-label">Completion Year</label>
-																	<input formControlName="completionYear" type="date" placeholder="Completion" class="form-control">
-																	<span class="material-input"></span></div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-
-											<div class="col-md-4 ">
-												<button [ngClass]="{'hide': itemAdded2}" type="button" (click)="addEducation(registrationForm)" id="addcp" class="btn btn-round btn-default">+ add qualifications</button>
-											</div>
-										</div>
-										</div>
-									</div>
-									<div class="tab-pane" id="experience">
-
-										<div class="col-sm-12">
-											<h4>Provide details of your experience</h4>
-											<div formArrayName="experience">
-												<div class="row" *ngFor="let item of registrationForm.controls.experience.controls; let i=index">
-													<div [formGroupName]="i">
-														<!--<div class="col-am-10">-->
-														<div class="col-sm-3">
-															<div class="input-group">Next
-																<span class="input-group-addon">
-														<i class="material-icons">local_library</i>
-													</span>
-																<div class="form-group">
-																	<label class="control-label">Designation/Role</label>
-																	<input formControlName="role" type="text" placeholder="Head of Fetal Medicine" class="form-control">
-																	<span class="material-input"></span></div>
-															</div>
-														</div>
-														<div class="col-sm-3">
-															<div class="input-group">
-																<span class="input-group-addon">
-														<i class="material-icons">rate_review</i>
-													</span>
-																<div class="form-group">
-																	<label class="control-label">Organization</label>
-																	<input formControlName="org" type="text" placeholder="Apollo Hospitals, Bannerghatta" class="form-control">
-																	<span class="material-input"></span></div>
-															</div>
-														</div>
-														<!--</div>-->
-
-														<!--<div class="col-am-10">-->
-														<div class="col-sm-3">
-															<div class="input-group">
-																<!--<span class="input-group-addon">
-														<i class="material-icons">add_to_photos</i>
-													</span>-->
-																<div class="form-group">
-																	<label class="control-label">From date</label>
-																	<input formControlName="fromYear" type="date" class="form-control">
-																	<span class="material-input"></span></div>
-															</div>
-														</div>
-														<div class="col-sm-3">
-															<div class="input-group">
-																<!--<span class="input-group-addon">
-														<i class="material-icons">add_to_photos</i>
-													</span>-->
-																<div class="form-group">
-																	<label class="control-label">To date</label>
-																	<input formControlName="toYear" type="date" class="form-control">
-																	<span class="material-input"></span></div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-md-4">
-												<button [ngClass]="{'hide': itemAdded2}" type="button" (click)="addExperience(registrationForm)" id="addcp" class="btn btn-round btn-default">+ add experience</button>
-											</div>
-										</div>
-										<div class="col-sm-12">
-											<h4>Provide sample cases you have worked on</h4>
-											<div formArrayName="cases">
-												<div class="row" *ngFor="let item of registrationForm.controls.cases.controls; let i=index">
-													<div [formGroupName]="i">
-														<!--<div class="col-am-10">-->
-														<div class="col-sm-6">
-															<div class="input-group">
-																<span class="input-group-addon">
-														<i class="material-icons">local_hospital</i>
-													</span>
-																<div class="form-group">
-																	<label class="control-label">Case Brief</label>
-																	<input formControlName="brief" type="text" placeholder="Provide a brief of the case" class="form-control">
-																	<span class="material-input"></span></div>
-															</div>
-														</div>
-														<div class="col-sm-6">
-															<div class="input-group">
-																<span class="input-group-addon">
-														<i class="material-icons">assignment_ind</i>
-													</span>
-																<div class="form-group">
-																	<label class="control-label">Patient Background</label>
-																	<input formControlName="patientBrief" type="text" placeholder="Provide a brief about the patient" class="form-control">
-																	<span class="material-input"></span></div>
-															</div>
-														</div>
-												
-														<div class="col-sm-12">
-															<div class="form-group form-file-upload is-empty is-fileinput">
-																<input type="file" id="inputFile3" multiple="">
-																<div class="input-group">
-																	<input type="text" readonly="" class="form-control" formControlName="images" placeholder="Upload case related files/ images">
-																	<span class="input-group-btn input-group-s">
-										<button type="button" class="btn btn-just-icon btn-round btn-info">
-											<i class="material-icons">layers</i>
-										</button>
-									</span>
-																</div>
-																<span class="material-input"></span></div>
-
-														</div>
-
-													</div>
-												</div>
-											</div>
-											<div class="col-md-4">
-												<button [ngClass]="{'hide': itemAdded2}" type="button" (click)="addCases(registrationForm)" id="addcp" class="btn btn-round btn-default">+ add cases</button>
-											</div>
-										</div>
-
-									</div>
-									<div class="tab-pane" id="facility">
-
-										<div class="col-sm-10 col-sm-offset-1">
-											<div class="col-sm-6">
-												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="material-icons">person</i>
-													</span>
-													<div class="form-group label-floating is-empty">
-														<label class="control-label">Name of your facility</label>
-														<input formControlName="facilityName" type="text" class="form-control">
-														<span class="material-input"></span></div>
-												</div>
-											</div>
-											<div class="col-sm-6">
-												<div class="input-group">
-													<span class="input-group-addon">
-														<i class="material-icons">local_printshop</i>
-													</span>
-													<div class="form-group label-floating is-empty">
-
-														<input type="text" id="area" formControlName="facilityArea" class="form-control" placeholder="Area of Facility" (setAddress)="getAddress($event)"
-														 [options]="{componentRestrictions: { country: 'IN' }}" ng2-google-place-autocomplete />
-														<span class="material-input"></span></div>
-												</div>
-											</div>
-
-											<div class="input-group">
-												<span class="input-group-addon">
-														<i class="material-icons">local_post_office</i>
-													</span>
-												<div class="form-group label-floating is-empty">
-													<label class="control-label">Address of your facility</label>
-													<textarea formControlName="facilityAddress" type="text" class="form-control"></textarea>
-													<span class="material-input"></span></div>
-											</div>
-
-											<div class="input-group">
-												<input type="text" readonly="" class="form-control" formControlName="facilityImages" placeholder="Upload images of the facility">
-												<span class="input-group-btn input-group-s">
-										<button type="button" class="btn btn-just-icon btn-round btn-info">
-											<i class="material-icons">layers</i>
-										</button>
-									</span>
-											</div>
-
-										</div>
-
-
-									</div>
-								</div>
-
-								<div class="wizard-footer">
-									<div class="pull-right">
-										<input type='button' class='btn btn-next btn-fill btn-danger btn-wd' name='next' value='Next' />
-										<button (click)="onSubmit(registrationForm.value)" class='btn btn-finish btn-fill btn-danger btn-wd'>Finish</button>
-										<!--<button [disabled]="!registrationForm.valid" (click)="onSubmit(registrationForm.value)" class='btn btn-finish btn-fill btn-danger btn-wd'>Finish</button>-->
-										<!--<input type='button' type="submit" class='btn btn-finish btn-fill btn-danger btn-wd' name='finish' value='Finish' />-->
-									</div>
-									<div class="pull-left">
-										<input type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous' value='Previous' />
-
-										<div class="footer-checkbox">
-											<div class="col-sm-12">
-												<div class="checkbox">
-													<label>
-													  <input type="checkbox" name="optionsCheckboxes">
-												  </label> Subscribe to our newsletter
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="clearfix"></div>
-								</div>
-							</form>
-						</div>
-					</div>
-					<!-- wizard container -->
-				</div>
-			</div>
-			<!-- row -->
-		</div>
-		<!--  big container -->
-
-		<div class="footer">
-			<!--<div class="container text-center">
-			Made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Cureyo Team</a>
-			<!--<a href="http://www.creative-tim.com/product/material-bootstrap-wizard">here.</a>-->
-			<!--</div>-->
-		</div>
-	</div>
-</form>
+<!--<form [formGroup]="registrationForm" (keydown.enter)="$event.preventDefault()" (ngSubmit)="onSubmit(registrationForm.value)"-->
+<!--class="form">-->
+<div class="image-container set-full-height" style="background-image: url('http://senhospitalagra.com/images/ps.jpg')">
+   <!--   Creative Tim Branding   -->
+   <!--   Big container   -->
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-8 col-sm-offset-2">
+            <!--      Wizard container        -->
+            <div class="wizard-container">
+               <div *ngIf="formReady" class="card wizard-card" data-color="red" id="wizard">
+                  
+                     <!--        You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"             -->
+                     <div class="wizard-header">
+                        <h3 class="wizard-title">
+                           User Registration Form
+                        </h3>
+                        <h5>This information will let us know more about you.</h5>
+                     </div>
+                     <div class="wizard-navigation">
+                        <ul class="nav nav-pills nav-pills-icons" role="tablist">
+                           <li><a href="#details" role="tab" data-toggle="tab">Basic Details</a></li>
+                           <li><a href="#engage" role="tab" data-toggle="tab">Engagement Type</a></li>
+                           <li><a href="#facility" role="tab" data-toggle="tab">Facility Details</a></li>
+                           <li><a href="#experience" role="tab" data-toggle="tab">Experience</a></li>
+                           <li><a href="#education" role="tab" data-toggle="tab">Education</a></li>
+                        </ul>
+                     </div>
+                     <!--<div class="moving-tab" style="width: 187.5px; transform: translate3d(-8px, 0px, 0px); transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1);">Location</div>-->
+                     
+                     <div class="tab-content">
+                         
+                        <div class="tab-pane" id="details">
+                            <form [formGroup]="registrationForm" action="" method="">
+                           <div class="row">
+                              <div class="col-sm-12">
+                                 <h4 class="info-text"><b> Let's start with the basic details.</b></h4>
+                              </div>
+                              <div class="col-sm-10 col-md-offset-1">
+                                 <div class="col-sm-6">
+                                    <div class="input-group">
+                                       <span class="input-group-addon">
+                                       <i class="material-icons">account_box</i>
+                                       </span>
+                                       <div class="form-group label-floating is-empty">
+                                          <label class="control-label">Full Name</label>
+                                          <input formControlName="fullName" type="text" class="form-control">
+                                          <span class="material-input"></span>
+                                       </div>
+                                    </div>
+                                    <div class="input-group">
+                                       <span class="input-group-addon">
+                                       <i class="material-icons">email</i>
+                                       </span>
+                                       <div class="form-group label-floating is-empty">
+                                          <label class="control-label">Your Email</label>
+                                          <input formControlName="email" type="text" class="form-control">
+                                          <span class="material-input"></span>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-sm-6">
+                                    <div class="input-group">
+                                       <span class="input-group-addon">
+                                       <i class="material-icons">phone</i>
+                                       </span>
+                                       <div class="form-group label-floating is-empty">
+                                          <label class="control-label">Phone Number</label>
+                                          <input formControlName="phone" type="text" class="form-control">
+                                          <span class="material-input"></span>
+                                       </div>
+                                       <!--</div>-->
+                                    </div>
+                                    <div class="input-group">
+                                       <span class="input-group-addon">
+                                       <i class="material-icons">room</i>
+                                       </span>
+                                       <div class="form-group label-floating is-empty">
+                                          <input type="text" id="area" formControlName="area" class="form-control" placeholder="Enter your base location" (setAddress)="getAddress1($event)"
+                                          [options]="{componentRestrictions: { country: 'IN' }}" ng2-google-place-autocomplete />
+                                          <span class="material-input"></span>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </form>
+                        </div>
+                        <div class="tab-pane" id="engage">
+                            <form [formGroup]="registrationForm" action="" method="">
+                           <h4 class="info-text">What describes you best? </h4>
+                           <div class="row">
+                              <div class="col-sm-10 col-sm-offset-1">
+                                 <div class="col-sm-4">
+                                    <div class="choice" (click)="updateType('clinic')" data-toggle="wizard-checkbox">
+                                       <input type="checkbox" name="jobb" value="Design">
+                                       <div class="icon">
+                                          <i class="material-icons">domain</i>
+                                       </div>
+                                       <h6>Facility Owner</h6>
+                                    </div>
+                                 </div>
+                                 <div class="col-sm-4">
+                                    <div class="choice" (click)="updateType('doctor')" data-toggle="wizard-checkbox">
+                                       <input type="checkbox" name="jobb" value="Code">
+                                       <div class="icon">
+                                          <i class="material-icons">person_outline</i>
+                                       </div>
+                                       <h6>Healthcare Professional</h6>
+                                    </div>
+                                 </div>
+                                 <div class="col-sm-4">
+                                    <div class="choice" (click)="updateType('both')" data-toggle="wizard-checkbox">
+                                       <input type="checkbox" name="jobb" value="Develop">
+                                       <div class="icon">
+                                          <i class="material-icons">local_hospital</i>
+                                       </div>
+                                       <h6>Both</h6>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        
+                            </form></div>
+                        <div class="tab-pane" id="facility">
+                            <form [formGroup]="registrationForm" action="" method="">
+                           <div class="col-sm-10 col-sm-offset-1">
+                              <div class="col-sm-6">
+                                 <div class="input-group">
+                                    <span class="input-group-addon">
+                                    <i class="material-icons">person</i>
+                                    </span>
+                                    <div class="form-group label-floating is-empty">
+                                       <label class="control-label">Name of your facility</label>
+                                       <input formControlName="facilityName" type="text" class="form-control">
+                                       <span class="material-input"></span>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-sm-6">
+                                 <div class="input-group">
+                                    <span class="input-group-addon">
+                                    <i class="material-icons">local_printshop</i>
+                                    </span>
+                                    <div class="form-group label-floating is-empty">
+                                       <input type="text" id="area" formControlName="facilityArea" class="form-control" placeholder="Area of Facility" (setAddress)="getAddress2($event)"
+                                       [options]="{componentRestrictions: { country: 'IN' }}" ng2-google-place-autocomplete />
+                                       <span class="material-input"></span>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="input-group">
+                                 <span class="input-group-addon">
+                                 <i class="material-icons">local_post_office</i>
+                                 </span>
+                                 <div class="form-group label-floating is-empty">
+                                    <label class="control-label">Address of your facility</label>
+                                    <textarea formControlName="facilityAddress" type="text" class="form-control"></textarea>
+                                    <span class="material-input"></span>
+                                 </div>
+                              </div>
+                              <div class="input-group">
+                                 <input type="text" readonly="" class="form-control" formControlName="facilityImages" placeholder="Upload images of the facility">
+                                 <span class="input-group-btn input-group-s">
+                                 <button type="button" class="btn btn-just-icon btn-round btn-info">
+                                 <i class="material-icons">layers</i>
+                                 </button>
+                                 </span>
+                              </div>
+                           </div>
+                            </form></div>
+                        <div class="tab-pane" id="experience">
+                            <form [formGroup]="registrationForm" action="" method="">
+                           <div class="col-sm-12">
+                              <h4>Provide details of your experience</h4>
+                              <div formArrayName="experience">
+                                 <div class="row" *ngFor="let item of registrationForm.controls.experience.controls; let i=index">
+                                    <div [formGroupName]="i">
+                                       <!--<div class="col-am-10">-->
+                                       <div class="col-sm-3">
+                                          <div class="input-group">
+                                             
+                                             <span class="input-group-addon">
+                                             <i class="material-icons">local_library</i>
+                                             </span>
+                                             <div class="form-group">
+                                                <label class="control-label">Designation/Role</label>
+                                                <input formControlName="role" type="text" placeholder="Head of Fetal Medicine" class="form-control">
+                                                <span class="material-input"></span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="col-sm-3">
+                                          <div class="input-group">
+                                             <span class="input-group-addon">
+                                             <i class="material-icons">rate_review</i>
+                                             </span>
+                                             <div class="form-group">
+                                                <label class="control-label">Organization</label>
+                                                <input formControlName="org" type="text" placeholder="Apollo Hospitals, Bannerghatta" class="form-control">
+                                                <span class="material-input"></span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <!--</div>-->
+                                       <!--<div class="col-am-10">-->
+                                       <div class="col-sm-3">
+                                          <div class="input-group">
+                                             <!--<span class="input-group-addon">
+                                                <i class="material-icons">add_to_photos</i>
+                                                </span>-->
+                                             <div class="form-group">
+                                                <label class="control-label">From date</label>
+                                                <input formControlName="fromYear" type="date" class="form-control">
+                                                <span class="material-input"></span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="col-sm-3">
+                                          <div class="input-group">
+                                             <!--<span class="input-group-addon">
+                                                <i class="material-icons">add_to_photos</i>
+                                                </span>-->
+                                             <div class="form-group">
+                                                <label class="control-label">To date</label>
+                                                <input formControlName="toYear" type="date" class="form-control">
+                                                <span class="material-input"></span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-4">
+                                 <button [ngClass]="{'hide': itemAdded2}" type="button" (click)="addExperience(registrationForm)" id="addcp" class="btn btn-round btn-default">+ add experience</button>
+                              </div>
+                           </div>
+                           <div class="col-sm-12">
+                              <h4>Provide sample cases you have worked on</h4>
+                              <div formArrayName="cases">
+                                 <div class="row" *ngFor="let item of registrationForm.controls.cases.controls; let i=index">
+                                    <div [formGroupName]="i">
+                                       <!--<div class="col-am-10">-->
+                                       <div class="col-sm-6">
+                                          <div class="input-group">
+                                             <span class="input-group-addon">
+                                             <i class="material-icons">local_hospital</i>
+                                             </span>
+                                             <div class="form-group">
+                                                <label class="control-label">Case Brief</label>
+                                                <input formControlName="brief" type="text" placeholder="Provide a brief of the case" class="form-control">
+                                                <span class="material-input"></span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="col-sm-6">
+                                          <div class="input-group">
+                                             <span class="input-group-addon">
+                                             <i class="material-icons">assignment_ind</i>
+                                             </span>
+                                             <div class="form-group">
+                                                <label class="control-label">Patient Background</label>
+                                                <input formControlName="patientBrief" type="text" placeholder="Provide a brief about the patient" class="form-control">
+                                                <span class="material-input"></span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="col-sm-12">
+                                          <div class="form-group form-file-upload is-empty is-fileinput">
+                                             <input type="file" id="inputFile3" multiple="">
+                                             <div class="input-group">
+                                                <input type="text" readonly="" class="form-control" formControlName="images" placeholder="Upload case related files/ images">
+                                                <span class="input-group-btn input-group-s">
+                                                <button type="button" class="btn btn-just-icon btn-round btn-info">
+                                                <i class="material-icons">layers</i>
+                                                </button>
+                                                </span>
+                                             </div>
+                                             <span class="material-input"></span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-4">
+                                 <button [ngClass]="{'hide': itemAdded2}" type="button" (click)="addCases(registrationForm)" id="addcp" class="btn btn-round btn-default">+ add cases</button>
+                              </div>
+                           </div>
+                            </form>
+                            </div>
+                         
+                        <div class="tab-pane" id="education">
+                           <div class="row">
+                              <div class="col-sm-10 col-sm-offset-1">
+                                 <form [formGroup]="registrationForm" action="" method="">
+                                 <h4>Provide details of your qualifications</h4>
+                                 <div formArrayName="education">
+                                    <div class="row" *ngFor="let item of registrationForm.controls.education.controls; let i=index">
+                                       <div [formGroupName]="i">
+                                          <div class="col-sm-4">
+                                             <div class="input-group">
+                                                <span class="input-group-addon">
+                                                <i class="material-icons">school</i>
+                                                </span>
+                                                <div class="form-group">
+                                                   <label class="control-label">Degree</label>
+                                                   <input formControlName="degree" placeholder="E.g., MBBS" type="text" class="form-control">
+                                                   <span class="material-input"></span>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="col-sm-4">
+                                             <div class="input-group">
+                                                <span class="input-group-addon">
+                                                <i class="material-icons">location_city</i>
+                                                </span>
+                                                <div class="form-group ">
+                                                   <label class="control-label">Institute</label>
+                                                   <input formControlName="institute" placeholder="E.g., AIIMS" type="text" class="form-control">
+                                                   <span class="material-input"></span>
+                                                </div>
+                                             </div>
+                                          </div>
+                                          <div class="col-sm-4">
+                                             <div class="input-group">
+                                                <span class="input-group-addon">
+                                                <i class="material-icons">insert_invitation</i>
+                                                </span>
+                                                <div class="form-group">
+                                                   <label class="control-label">Completion Year</label>
+                                                   <input formControlName="completionYear" type="date" placeholder="Completion" class="form-control">
+                                                   <span class="material-input"></span>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-4 ">
+                                    <button [ngClass]="{'hide': itemAdded2}" type="button" (click)="addEducation(registrationForm)" id="addcp" class="btn btn-round btn-default">+ add qualifications</button>
+                                 </div>
+                                 </form>
+                                 <div class="row">
+                                    <div class="col-sm-12">
+                                       <div class="input-group">
+                                          <span class="input-group-addon">
+                                          <i class="material-icons">add_box</i>
+                                          </span>
+                                          <div class="label-floating is-empty">
+                                             <rl-tag-input [(ngModel)]="specs"  class="tagsinput" placeholder="Add your specialities" theme="bootstrap" autocomplete="true" [autocompleteItems]="medSpecialities"></rl-tag-input>
+                                             <span class="material-input"></span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <form [formGroup]="registrationForm" action="" method="">
+                                    <div class="col-sm-5">
+                                       <div class="input-group">
+                                          <span class="input-group-addon">
+                                          <i class="material-icons">perm_contact_calendar</i>
+                                          </span>
+                                          <div class="form-group label-floating is-empty">
+                                             <label class="control-label">Registration Number</label>
+                                             <input name="name" formControlName="medicalNumber" type="text" class="form-control">
+                                             <span class="material-input"></span>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    </form>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        
+                        
+                     </div>
+                     <div class="wizard-footer">
+                        <div class="pull-right">
+                           <input type='button' class='btn btn-next btn-fill btn-danger btn-wd' name='next' value='Next' />
+                           <button (click)="onSubmit(registrationForm.value)" class='btn btn-finish btn-fill btn-danger btn-wd'>Finish</button>
+                           <!--<button [disabled]="!registrationForm.valid" (click)="onSubmit(registrationForm.value)" class='btn btn-finish btn-fill btn-danger btn-wd'>Finish</button>-->
+                           <!--<input type='button' type="submit" class='btn btn-finish btn-fill btn-danger btn-wd' name='finish' value='Finish' />-->
+                        </div>
+                        <div class="pull-left">
+                           <input type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous' value='Previous' />
+                           <div class="footer-checkbox">
+                              <div class="col-sm-12">
+                                 <div class="checkbox">
+                                    <label>
+                                    <input type="checkbox" name="optionsCheckboxes">
+                                    </label> Subscribe to our newsletter
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="clearfix"></div>
+                     </div>
+                  
+               </div>
+            </div>
+            <!-- wizard container -->
+         </div>
+      </div>
+      <!-- row -->
+   </div>
+   <!--  big container -->
+   <div class="footer">
+      <!--<div class="container text-center">
+         Made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Cureyo Team</a>
+         <!--<a href="http://www.creative-tim.com/product/material-bootstrap-wizard">here.</a>-->
+      <!--</div>-->
+   </div>
+</div>
+<!--</form>-->

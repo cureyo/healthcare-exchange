@@ -151,7 +151,7 @@ export class AuthService {
     return this.af.database.object(this.db.users + uid).map(
       res => {
         //console.log(res);
-        if (!res.firstName) {
+        if (!res.fullName) {
           //console.log("Doctor firstName not found")
           return false;
         } else {
