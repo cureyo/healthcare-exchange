@@ -24,7 +24,7 @@ export const AppConfig = {
     },
     database: {
         users: environment.envName + '/Users/',
-        // clinics: environment.envName + '/ClinicTable/',
+        cases: environment.envName + '/Cases/',
         MedicalSpecialities:  '/MedicalSpecialities/'
        
     }
