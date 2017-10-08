@@ -9,6 +9,7 @@ import { AppConfig } from "../config/app.config";
 export class AuthService {
 
     users: FirebaseListObservable<any[]>;
+    cases: FirebaseListObservable<any[]>;
     regUser: FirebaseListObservable<any[]>;
     userData: any;
 
@@ -35,6 +36,13 @@ export class AuthService {
 
   }//login
 
+
+  public _getUser() {
+    return this.af.auth.map(
+      response => this._changeState(response)
+    );
+  }//_getUser
+
   public _saveUser(uid, formData) {
     console.log("formdata");
     console.log(formData);
@@ -43,6 +51,15 @@ export class AuthService {
     return db.set(formData)
 
   }//_saveUser
+
+   public _savePatient(uid, formsData) {
+    console.log("formsdata");
+    console.log(formsData);
+    // console.log(formsData.specializations);
+    const db = this.af.database.object(this.db.cases + uid);
+    return db.set(formsData)
+
+  }//_savePatientDetails
 
    private _getUserInfo(user: any): any {
 
@@ -134,13 +151,6 @@ export class AuthService {
     }
 
   }//_changeState()
-
-
-  public _getUser() {
-    return this.af.auth.map(
-      response => this._changeState(response)
-    );
-  }//_getUser
 
   public _setUserData(userData) {
     this.userData = userData;

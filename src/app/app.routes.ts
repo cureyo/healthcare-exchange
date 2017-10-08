@@ -10,9 +10,8 @@ export const MODULE_ROUTES: Route[] =[
     { path: '',  component:LandingPageComponent, pathMatch: 'full'  },
     { path: 'register',  component:RegistrationPageComponent, pathMatch: 'full'  },
     { path: 'listings',  component:ListingPageComponent, pathMatch: 'full'  },
+    { path: 'postCase',  component:PostCaseComponent, pathMatch: 'full'  }
     
-    
-
 
 ]
 
