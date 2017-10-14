@@ -41,9 +41,7 @@ export class PostCaseComponent implements OnInit {
             age: ['', Validators.required],
             gender: ['', Validators.required],
             condition: this._fb.array([]),
-            // patientForm: this._fb.array([
-            //     this.initializePatient(null, null, null)
-            // ]),
+
             patientImages: ['', Validators.required]
 
         });
