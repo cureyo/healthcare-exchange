@@ -25,6 +25,7 @@ export class PostCaseComponent implements OnInit {
     private user: {};
     private isAuth: boolean;
     private medSpecialities: any;
+    private specs2: any = [];
     private formReady: boolean = false;
 
     constructor(private _fb: FormBuilder, private _authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) { }
@@ -37,41 +38,44 @@ export class PostCaseComponent implements OnInit {
             procedure: ['', Validators.required],
             speciality: this._fb.array([]),
             case: ['', Validators.required],
-            // age: ['', Validators.required],
-            // gender: ['', Validators.required],
-            // condition: ['', Validators.required],
-            patientForm: this._fb.array([
-                this.initializePatient(null, null, null)
-            ]),
+            age: ['', Validators.required],
+            gender: ['', Validators.required],
+            condition: this._fb.array([]),
+            // patientForm: this._fb.array([
+            //     this.initializePatient(null, null, null)
+            // ]),
             patientImages: ['', Validators.required]
 
         });
 
-        this.formReady = true;
+        
         this.getMedicalSpecialities();
+        this.formReady = true;
     }
-    initializePatient(age, gender, condition) {
-        console.log("initializePatient", age, gender, condition);
-        let control = this._fb.group({
-            age: [age, Validators.required],
-            gender: [gender, Validators.required],
-            condition: [condition, Validators.required]
-        });
-        return control;
-    }
+    // initializePatient(age, gender, condition) {
+    //     console.log("initializePatient", age, gender, condition);
+    //     let control = this._fb.group({
+    //         age: [age, Validators.required],
+    //         gender: [gender, Validators.required],
+    //         condition: [condition, Validators.required]
+    //     });
+    //     return control;
+    // }
+getMedicalSpecialities() {
+    this._authService._getMedicalSpecialities()
+      .subscribe(
+      medData => {
+        this.medSpecialities = medData;
+        console.log("this.medSpecialities", this.medSpecialities)
+        
+      }
+      )
+  }
 
-    getMedicalSpecialities() {
-        this._authService._getMedicalSpecialities()
-            .subscribe(
-            medData => {
-                this.medSpecialities = medData;
-                console.log("this.medSpecialities", this.medSpecialities)
-            })
-    }
-     addPatientDetails(form) {
-    const control = <FormArray>this.postCaseForm.controls['background'];
-    control.push(this.initializePatient(null, null, null));
-     }  
+    //  addPatientDetails(form) {
+    // const control = <FormArray>this.postCaseForm.controls['background'];
+    // // control.push(this.initializePatient(null, null, null));
+    //  }  
 
       onSubmit(model) {
     console.log(model, " model details ");

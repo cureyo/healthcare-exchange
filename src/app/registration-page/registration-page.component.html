@@ -9,7 +9,7 @@
          <div class="col-sm-8 col-sm-offset-2">
             <!--      Wizard container        -->
             <div class="wizard-container">
-                <iframe src="https://appear.in/testroom23"></iframe>
+                
                <div *ngIf="formReady" class="card wizard-card" data-color="red" id="wizard">
                   
                      <!--        You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"             -->
@@ -90,7 +90,8 @@
                         </div>
                         <div class="tab-pane" id="engage">
                             <form [formGroup]="registrationForm" action="" method="">
-                           <h4 class="info-text">What describes you best? </h4>
+                          
+                           <h4 class="info-text"><b> What describes you best? </b></h4>
                            <div class="row">
                               <div class="col-sm-10 col-sm-offset-1">
                                  <div class="col-sm-4">
@@ -125,6 +126,7 @@
                         
                             </form></div>
                         <div class="tab-pane" id="facility">
+                            <h4 class="info-text"><b>Provide details of your facility</b></h4>
                             <form [formGroup]="registrationForm" action="" method="">
                            <div class="col-sm-10 col-sm-offset-1">
                               <div class="col-sm-6">
@@ -174,7 +176,9 @@
                         <div class="tab-pane" id="experience">
                             <form [formGroup]="registrationForm" action="" method="">
                            <div class="col-sm-12">
-                              <h4>Provide details of your experience</h4>
+                             
+                               <h4 class="info-text"><b>Provide details of your experience</b></h4>
+                              
                               <div formArrayName="experience">
                                  <div class="row" *ngFor="let item of registrationForm.controls.experience.controls; let i=index">
                                     <div [formGroupName]="i">
@@ -236,7 +240,8 @@
                               </div>
                            </div>
                            <div class="col-sm-12">
-                              <h4>Provide sample cases you have worked on</h4>
+                             
+                               <h4 class="info-text"><b>Provide sample cases you have worked on </b></h4>
                               <div formArrayName="cases">
                                  <div class="row" *ngFor="let item of registrationForm.controls.cases.controls; let i=index">
                                     <div [formGroupName]="i">
@@ -293,7 +298,8 @@
                            <div class="row">
                               <div class="col-sm-10 col-sm-offset-1">
                                  <form [formGroup]="registrationForm" action="" method="">
-                                 <h4>Provide details of your qualifications</h4>
+                           
+                                 <h4 class="info-text"><b>Provide details of your qualifications</b></h4>
                                  <div formArrayName="education">
                                     <div class="row" *ngFor="let item of registrationForm.controls.education.controls; let i=index">
                                        <div [formGroupName]="i">

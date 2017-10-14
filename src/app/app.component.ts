@@ -72,7 +72,8 @@ ngOnInit() {
                    
                 //  });
 
-                console.log("logged in")
+                console.log("logged in");
+                this.router.navigate(['listings']);
 
               } else {
                 // this.router.navigate(['listings']);

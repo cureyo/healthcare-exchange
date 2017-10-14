@@ -2,7 +2,7 @@
 <!--<div class="col-sm-8 col-sm-offset-2">
 				<div class="wizard-container">-->
 <div class="card wizard-card" data-color="red" id="wizard">
-	<form action="" method="">
+	<!--<form action="" method="">-->
 		<!--        You can switch " data-color="blue" "  with one of the next bright colors: "green", "orange", "red", "purple"             -->
 
 		<div class="wizard-header">
@@ -16,6 +16,7 @@
 				<li><a href="#procedure" data-toggle="tab">Procedure Details</a></li>
 				<li><a href="#background" data-toggle="tab">Patient Background</a></li>
 				<li><a href="#scans" data-toggle="tab">Scans and Reports</a></li>
+				<li><a href="#specialists" data-toggle="tab">Specialists</a></li>
 				<!--<li><a href="#experience" role="tab" data-toggle="tab">Experience</a></li>
 									<li><a href="#facility" role="tab" data-toggle="tab">Facility Details</a></li>-->
 			</ul>
@@ -23,6 +24,7 @@
 
 		<div class="tab-content">
 			<div class="tab-pane active" id="procedure">
+				<form [formGroup]="postCaseForm" action="" method="">
 				<div class="row">
 					<div class="col-sm-12">
 						<h4 class="info-text"> Let's start with the basic details.</h4>
@@ -38,21 +40,7 @@
 							</div>
 						</div>
 
-						<div class="input-group">
-							<span class="input-group-addon">
-														<i class="material-icons">local_hospital</i>
-													</span>
-							<div class="form-group label-floating">
-								<label class="control-label">Specialists you are looking for</label>
-
-								<!--<input type="text" value="Amsterdam,Washington,Sydney,Beijing" data-role="tagsinput" data-color="rose"/>-->
-
-
-								<rl-tag-input class="tagsinput" placeholder="Add multiple" theme="bootstrap" autocomplete="true" [autocompleteItems]="medSpecialities"></rl-tag-input>
-
-
-							</div>
-						</div>
+					
 
 						<div class="input-group">
 							<span class="input-group-addon">
@@ -67,9 +55,11 @@
 					</div>
 
 				</div>
+				</form>
 			</div>
 			<div class="tab-pane" id="background">
 				<h4 class="info-text">Please provide patient's medical history </h4>
+				<form [formGroup]="postCaseForm" action="" method="">
 				<div class="row">
 					<div class="col-sm-10 col-sm-offset-1">
 						<div class="col-md-6">
@@ -129,8 +119,10 @@
 						</div>
 					</div>
 				</div>
+				</form>
 			</div>
 			<div class="tab-pane" id="scans">
+				<form [formGroup]="postCaseForm" action="" method="">
 				<div class="row">
 					<h4 class="info-text"> Patient Reports
 						<br>
@@ -151,6 +143,29 @@
 
 					</div>
 				</div>
+				</form>
+			</div>
+				<div class="tab-pane" id="specialists">
+				<!--<form [formGroup]="postCaseForm" action="" method="">-->
+				<div class="row">
+					<h4 class="info-text"> Specialists 
+						<br>
+						<small>Which specialists are you looking for</small></h4>
+					<div class="col-sm-10 col-sm-offset-1">
+
+						 <div class="input-group">
+                                          <span class="input-group-addon">
+                                          <i class="material-icons">add_box</i>
+                                          </span>
+                                          <div class="label-floating is-empty">
+                                             <rl-tag-input [(ngModel)]="specs2"  class="tagsinput" placeholder="Add your specialities" theme="bootstrap" autocomplete="true" [autocompleteItems]="medSpecialities"></rl-tag-input>
+                                             <span class="material-input"></span>
+                                          </div>
+                                       </div>
+
+					</div>
+				</div>
+				<!--</form>-->
 			</div>
 
 		</div>
@@ -170,7 +185,7 @@
 			</div>
 			<div class="clearfix"></div>
 		</div>
-	</form>
+	<!--</form>-->
 </div>
 <!--</div>-->
 <!-- wizard container -->
