@@ -30,7 +30,7 @@
 						<h4 class="info-text"> Let's start with the basic details.</h4>
 					</div>
 					<div class="col-sm-10 col-sm-offset-1">
-						<div class="input-group">
+						<!--<div class="input-group">
 							<span class="input-group-addon">
 														<i class="material-icons">settings_overscan</i>
 													</span>
@@ -38,28 +38,36 @@
 								<label class="control-label">Procedure Type</label>
 								<input name="name" type="text" class="form-control">
 							</div>
-						</div>
-
+						</div>-->
 						<div class="input-group">
+							<span class="input-group-addon">
+														<i class="material-icons">settings_overscan</i>
+													</span>
+									<label class="control-label">Procedure Type</label>
+									<input formControlName="procType" type="text" class="form-control">
+								
+								</div>
+
+						<!--<div class="input-group">
 							<span class="input-group-addon">
 														<i class="material-icons">local_hospital</i>
 													</span>
 							<div class="form-group label-floating">
 								<label class="control-label">Specialists you are looking for</label>
 
-								<!--<input type="text" value="Amsterdam,Washington,Sydney,Beijing" data-role="tagsinput" data-color="rose"/>-->
+								//<input type="text" value="Amsterdam,Washington,Sydney,Beijing" data-role="tagsinput" data-color="rose"/>
 
 
 								<rl-tag-input class="tagsinput" placeholder="Add multiple" theme="bootstrap" autocomplete="true" [autocompleteItems]="medSpecialities">
 									
 								</rl-tag-input>
-								<!--<input type="text" placeholder="Add multiple" theme="bootstrap" autocomplete="true" [autocompleteItems]="medSpecialities">
+								//<input type="text" placeholder="Add multiple" theme="bootstrap" autocomplete="true" [autocompleteItems]="medSpecialities">
 									
-								</input>-->
+								</input>
 
 
 							</div>
-						</div>
+						</div>-->
 
 						<div class="input-group">
 							<span class="input-group-addon">
@@ -67,7 +75,7 @@
 													</span>
 							<div class="form-group label-floating is-empty">
 								<label class="control-label"> Case Details</label>
-								<textarea class="form-control" rows="3"></textarea>
+								<textarea class="form-control" rows="2"></textarea>
 								<span class="material-input"></span></div>
 						</div>
 
