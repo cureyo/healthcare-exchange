@@ -177,7 +177,7 @@
                                           <i class="material-icons">add_box</i>
                                           </span>
                                           <div class="label-floating is-empty">
-                                             <rl-tag-input [(ngModel)]="specs2"  class="tagsinput" placeholder="Add your specialities" theme="bootstrap" autocomplete="true" [autocompleteItems]="medSpecialities"></rl-tag-input>
+                                             <rl-tag-input *ngIf="medSReady" [(ngModel)]="specs2"  class="tagsinput" placeholder="Add your specialities" theme="bootstrap" autocomplete="true" [autocompleteItems]="medSpecialities"></rl-tag-input>
                                              <span class="material-input"></span>
                                           </div>
                                        </div>

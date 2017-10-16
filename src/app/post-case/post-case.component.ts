@@ -27,7 +27,7 @@ export class PostCaseComponent implements OnInit {
     private medSpecialities: any;
     private specs2: any = [];
     private formReady: boolean = false;
-
+    private medSReady: boolean = false;
     constructor(private _fb: FormBuilder, private _authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
     ngOnInit() {
@@ -65,7 +65,7 @@ getMedicalSpecialities() {
       medData => {
         this.medSpecialities = medData;
         console.log("this.medSpecialities", this.medSpecialities)
-        
+        this.medSReady = true;
       }
       )
   }
