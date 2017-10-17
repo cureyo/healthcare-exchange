@@ -36,6 +36,7 @@ export class PostCaseComponent implements OnInit {
 
         this.postCaseForm = this._fb.group({
             procedure: ['', Validators.required],
+            caseBrief:['', Validators.required],
             speciality: this._fb.array([]),
             case: ['', Validators.required],
             age: ['', Validators.required],

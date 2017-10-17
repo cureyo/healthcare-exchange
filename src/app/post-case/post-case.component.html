@@ -44,7 +44,7 @@
 														<i class="material-icons">settings_overscan</i>
 													</span>
 									<label class="control-label">Procedure Type</label>
-									<input formControlName="procType" type="text" class="form-control">
+									<input formControlName="procedure" type="text" style="margin-top: 0;" class="form-control">
 								
 								</div>
 
@@ -75,7 +75,7 @@
 													</span>
 							<div class="form-group label-floating is-empty">
 								<label class="control-label"> Case Details</label>
-								<textarea class="form-control" rows="2"></textarea>
+								<textarea class="form-control" formControlName="caseBrief" rows="2"></textarea>
 								<span class="material-input"></span></div>
 						</div>
 
@@ -122,12 +122,19 @@
                                              <span class="input-group-addon">
                                              <i class="material-icons">local_hospital</i>
                                              </span>
-                                             <div class="form-group">
-                                                <label class="control-label">Existing conditions</label>
-                                                <input formControlName="condition" type="text" class="form-control">
-                                                <span class="material-input"></span>
+                                             <div class="bootstrap-tagsinput">
+												<label class="control-label">Existing conditions (enter multiple)</label>
+                                                <!--<input formControlName="condition" type="text" class="tagsinput" data-role="tagsinput" data-color="rose" style="display: none;">-->
+                                                <!--<span class="material-input"></span>-->
+												<div class="bootstrap-tagsinput"></div><input type="text" formControlName="condition" value="Diabetes, Hypertension" class="tagsinput" data-role="tagsinput" data-color="rose" style="display: none;">
                                              </div>
                                           </div>
+										  <div class="col-md-6">
+						
+							
+
+                            <!-- You can change data-color="rose" with one of our colors primary | warning | info | danger | success -->
+						</div>
 							<!--<div class="input-group">
 								<span class="input-group-addon">
 														<i class="material-icons">local_hospital</i>
