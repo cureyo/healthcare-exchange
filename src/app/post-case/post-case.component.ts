@@ -1,7 +1,7 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { AuthService } from "../services/firebaseauth.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
-import { FormGroup, FormBuilder, Validators, FormArray} from "@angular/forms";
+import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 // import {TagsInputComponents} from 'bootstrap-tagsinput';
 
 declare var $: any;
@@ -24,6 +24,7 @@ export class PostCaseComponent implements OnInit {
     private loginForm: FormGroup;
     private user: {};
     private isAuth: boolean;
+    private condition2: any = [];
     private medSpecialities: any;
     private specs2: any = [];
     private formReady: boolean = false;
@@ -33,21 +34,20 @@ export class PostCaseComponent implements OnInit {
     ngOnInit() {
         $.getScript('../../assets/js/jquery.bootstrap.js');
         $.getScript('../../assets/js/material-bootstrap-wizard.js');
+        $.getScript('../../assets/js/bootstrap-tagsinput.js');
 
         this.postCaseForm = this._fb.group({
             procedure: ['', Validators.required],
-            caseBrief:['', Validators.required],
+            caseBrief: ['', Validators.required],
             speciality: this._fb.array([]),
-            case: ['', Validators.required],
             age: ['', Validators.required],
             gender: ['', Validators.required],
-            condition: this._fb.array([]),
-
+            condition: ['', Validators.required],
             patientImages: ['', Validators.required]
 
         });
 
-        
+
         this.getMedicalSpecialities();
         this.formReady = true;
     }
@@ -60,41 +60,47 @@ export class PostCaseComponent implements OnInit {
     //     });
     //     return control;
     // }
-getMedicalSpecialities() {
-    this._authService._getMedicalSpecialities()
-      .subscribe(
-      medData => {
-        this.medSpecialities = medData;
-        console.log("this.medSpecialities", this.medSpecialities)
-        this.medSReady = true;
-      }
-      )
-  }
+    getMedicalSpecialities() {
+        this._authService._getMedicalSpecialities()
+            .subscribe(
+            medData => {
+                this.medSpecialities = medData;
+                console.log("this.medSpecialities", this.medSpecialities)
+                this.medSReady = true;
+            }
+            )
+    }
 
     //  addPatientDetails(form) {
     // const control = <FormArray>this.postCaseForm.controls['background'];
     // // control.push(this.initializePatient(null, null, null));
     //  }  
-
-      onSubmit(model) {
-    console.log(model, " model details ");
+showCondition(model) {
+    console.log(model['condition'])
+}
+    onSubmit(model) {
+        var elmt = document.getElementById('conditionInput');
+        // console.log(elmt);
+        console.log($(elmt).tagsinput('items'))
+        console.log(model, " model details ");
         // model['facilityArea'] = this.clinicAddress;
         // model['area'] = this.userAddress;
-        // model['speciality'] = this.specs;
-    console.log(model);
-    this._authService._getUser().subscribe(userData => {
-      console.log("user auth data", userData);
-      this._authService._savePatient(userData.user.uid, model)
-        .then(
-        data => {
-          console.log(data);
-          this.router.navigate(['listings']);
+        model['speciality'] = this.specs2;
+        model['condition'] = $(elmt).tagsinput('items');
+        console.log(model);
+        this._authService._getUser().subscribe(userData => {
+            console.log("user auth data", userData);
+            this._authService._savePatient(userData.user.uid, model)
+                .then(
+                data => {
+                    console.log(data);
+                    this.router.navigate(['listings']);
 
-        },
-        error => console.log(error)
-        );
-    });
+                },
+                error => console.log(error)
+                );
+        });
 
-  }
+    }
 
 }

@@ -15,13 +15,14 @@ export class RegistrationPageComponent implements OnInit {
 
   @Input() objectId: any;
   private registrationForm: FormGroup;
-  private user: {};
+  // private user: {};
   private isAuth: boolean;
   private isClinic: boolean = true;
   private isDoctor: boolean = true;
   private formReady: boolean = false;
   private clinicAddress: any;
   private userAddress: any;
+  private user: any;
   private medSpecialities: any;
   private specs: any = [];
   constructor(
@@ -34,34 +35,41 @@ export class RegistrationPageComponent implements OnInit {
     console.log(" %$#@#$ ", this.objectId);
     $.getScript('../../assets/js/jquery.bootstrap.js');
     $.getScript('../../assets/js/material-bootstrap-wizard.js');
+    $('.modal-open').modal('hide');
+    this._authService._getUser()
+      .subscribe(
+      userData => {
+        console.log(userData);
+        this.user = userData.user;
+        this.registrationForm = this._fb.group({
+          fullName: [userData.user.firstName + " " + userData.user.lastName, Validators.required],
+          email: [userData.user.email, Validators.required],
+          speciality: this._fb.array([]),
+          phone: ['', Validators.required],
+          medicalNumber: ['', Validators.required],
+          // city: ['', Validators.required],
+          area: ['', Validators.required],
+          education: this._fb.array([
+            this.initializeEducation(null, null, null)
+          ]),
+          experience: this._fb.array([
+            this.initializeExperience(null, null, null, null)
+          ]),
+          cases: this._fb.array([
+            this.initializeCases(null, null, null, null)
+          ]),
+          facilityName: ['', Validators.required],
+          facilityAddress: ['', Validators.required],
+          facilityImages: ['', Validators.required],
+          facilityArea: ['', Validators.required]
+        });
+
+        this.formReady = true;
+
+        this.getMedicalSpecialities();
 
 
-    this.registrationForm = this._fb.group({
-      fullName: ['', Validators.required],
-      email: ['', Validators.required],
-      speciality: this._fb.array([]),
-      phone: ['', Validators.required],
-      medicalNumber: ['', Validators.required],
-      // city: ['', Validators.required],
-      area: ['', Validators.required],
-      education: this._fb.array([
-        this.initializeEducation(null, null, null)
-      ]),
-      experience: this._fb.array([
-        this.initializeExperience(null, null, null, null)
-      ]),
-      cases: this._fb.array([
-        this.initializeCases(null, null, null, null)
-      ]),
-      facilityName: ['', Validators.required],
-      facilityAddress: ['', Validators.required],
-      facilityImages: ['', Validators.required],
-      facilityArea: ['', Validators.required]
-    });
-
-    this.formReady = true;
-
-    this.getMedicalSpecialities();
+      })
 
 
   }
@@ -71,7 +79,7 @@ export class RegistrationPageComponent implements OnInit {
       medData => {
         this.medSpecialities = medData;
         console.log("this.medSpecialities", this.medSpecialities)
-        
+
       }
       )
   }
@@ -137,7 +145,7 @@ export class RegistrationPageComponent implements OnInit {
     delete this.userAddress.photos;
     console.log("this is the places 1", this.userAddress);
   }
-getAddress2(place: Event) {
+  getAddress2(place: Event) {
     this.clinicAddress = place;
     delete this.clinicAddress.geometry;
     delete this.clinicAddress.photos;
