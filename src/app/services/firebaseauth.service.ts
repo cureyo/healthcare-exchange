@@ -42,7 +42,10 @@ export class AuthService {
       response => this._changeState(response)
     );
   }//_getUser
-
+  public getCases() {
+    const db = this.af.database.list(this.db.cases);
+    return db;
+  }
   public _saveUser(uid, formData) {
     console.log("formdata");
     console.log(formData);
@@ -52,12 +55,12 @@ export class AuthService {
 
   }//_saveUser
 
-   public _savePatient(uid, formsData) {
+   public _saveCase(uid, formsData) {
     console.log("formsdata");
     console.log(formsData);
     // console.log(formsData.specializations);
-    const db = this.af.database.object(this.db.cases + uid);
-    return db.set(formsData)
+    const db = this.af.database.list(this.db.cases);
+    return db.push(formsData)
 
   }//_savePatientDetails
 

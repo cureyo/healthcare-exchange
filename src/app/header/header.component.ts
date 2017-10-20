@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../services/firebaseauth.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
-import {FormGroup, FormBuilder,Validators} from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 declare var $: any;
 @Component({
   templateUrl: 'header.component.html',
@@ -10,21 +10,25 @@ declare var $: any;
 })
 export class HeaderComponent implements OnInit {
 
-private loginForm:FormGroup;
+  private loginForm: FormGroup;
   private user: {};
   private isAuth: boolean;
 
-  constructor(private _fb: FormBuilder,private _authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private _fb: FormBuilder, private _authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
-      ngOnInit() {
+  ngOnInit() {
 
-       
-         $.getScript('../../assets/js/jquery.bootstrap.js');
-        $.getScript('../../assets/js/material-bootstrap-wizard.js');
-     
 
-      }
-      emailLogin(model) {
+    $.getScript('../../assets/js/jquery.bootstrap.js');
+    $.getScript('../../assets/js/material-bootstrap-wizard.js');
 
-      }
+
+  }
+  emailLogin(model) {
+
+  }
+  public closeModal() {
+    console.log("closing the damn thingie")
+    $('#postcaseModal').hide();
+  }
 }

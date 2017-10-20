@@ -7,9 +7,9 @@
 
 		<div class="wizard-header">
 			<h3 class="wizard-title">
-				User Registration Form
+				Case Sharing Form
 			</h3>
-			<h5>This information will let us know more about you.</h5>
+			<h5>This information will help us post a case to relevant specialists for you.</h5>
 		</div>
 		<div class="wizard-navigation">
 			<ul class="nav nav-pills nav-pills-icons" role="tablist">
@@ -76,7 +76,7 @@
 													</span>
 							<div class="form-group label-floating is-empty">
 								<label class="control-label"> Case Details</label>
-								<textarea class="form-control" formControlName="case" rows="4"></textarea>
+								<textarea class="form-control" formControlName="caseBrief" rows="4"></textarea>
 								<span class="material-input"></span></div>
 						</div>
 
@@ -135,7 +135,7 @@
 													</span>
 								<div class="form-group label-floating">
 									<label class="control-label">Existing conditions </label>
-								<input  id="conditionInput" [(ngModel)]="condition2" type="text" class="tagsinput" data-role="tagsinput" data-color="rose"/>
+								<input  id="conditionInput" type="text" class="tagsinput" data-role="tagsinput" data-color="rose"/>
 
 										<!--<input formControlName="condition" type="text" class="tagsinput" value="Diabetes,Hypertension" data-role="tagsinput" data-color="rose" style="display: none;">-->
 									</div>

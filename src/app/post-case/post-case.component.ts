@@ -2,21 +2,13 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { AuthService } from "../services/firebaseauth.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
-// import {TagsInputComponents} from 'bootstrap-tagsinput';
+import { HeaderComponent } from '../header/header.component'
 
 declare var $: any;
-// @Component({
-//   templateUrl: 'registration-page.component.html',
-//   selector: 'registration-page',
-//   styleUrls: './registration-page.component.css',
-//   //styleUrls: ['./bloodsugar-carepath.component.css']
-//   moduleId: module.id
-// })
+
 @Component({
     selector: 'post-case-component',
     templateUrl: 'post-case.component.html',
-
-    //   styleUrls: ['pos-page.component.css']
 })
 export class PostCaseComponent implements OnInit {
 
@@ -29,12 +21,17 @@ export class PostCaseComponent implements OnInit {
     private specs2: any = [];
     private formReady: boolean = false;
     private medSReady: boolean = false;
-    constructor(private _fb: FormBuilder, private _authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) { }
+    constructor(private _fb: FormBuilder,
+        private headerComp: HeaderComponent,
+        private _authService: AuthService,
+        private router: Router,
+        private activatedRoute: ActivatedRoute) { }
 
     ngOnInit() {
         $.getScript('../../assets/js/jquery.bootstrap.js');
         $.getScript('../../assets/js/material-bootstrap-wizard.js');
         $.getScript('../../assets/js/bootstrap-tagsinput.js');
+        // $.getScript('../../assets/js/bootstrap-notify.js');
 
         this.postCaseForm = this._fb.group({
             procedure: ['', Validators.required],
@@ -51,15 +48,7 @@ export class PostCaseComponent implements OnInit {
         this.getMedicalSpecialities();
         this.formReady = true;
     }
-    // initializePatient(age, gender, condition) {
-    //     console.log("initializePatient", age, gender, condition);
-    //     let control = this._fb.group({
-    //         age: [age, Validators.required],
-    //         gender: [gender, Validators.required],
-    //         condition: [condition, Validators.required]
-    //     });
-    //     return control;
-    // }
+
     getMedicalSpecialities() {
         this._authService._getMedicalSpecialities()
             .subscribe(
@@ -71,34 +60,52 @@ export class PostCaseComponent implements OnInit {
             )
     }
 
-    //  addPatientDetails(form) {
-    // const control = <FormArray>this.postCaseForm.controls['background'];
-    // // control.push(this.initializePatient(null, null, null));
-    //  }  
-showCondition(model) {
-    console.log(model['condition'])
-}
+
     onSubmit(model) {
         var elmt = document.getElementById('conditionInput');
-        // console.log(elmt);
+
         console.log($(elmt).tagsinput('items'))
         console.log(model, " model details ");
-        // model['facilityArea'] = this.clinicAddress;
-        // model['area'] = this.userAddress;
+
         model['speciality'] = this.specs2;
         model['condition'] = $(elmt).tagsinput('items');
+
+
         console.log(model);
         this._authService._getUser().subscribe(userData => {
             console.log("user auth data", userData);
-            this._authService._savePatient(userData.user.uid, model)
-                .then(
-                data => {
-                    console.log(data);
-                    this.router.navigate(['listings']);
+            model['postedBy'] = userData.user.uid;
+            this._authService._fetchDocUser(userData.user.uid)
+                .subscribe(
+                docUserDets => {
+                    model['area'] = docUserDets.area.formatted_address;
+                    this._authService._saveCase(userData.user.uid, model)
+                        .then(
+                        data => {
+                            console.log(data);
+                            //  $('.modal').hide();
+                            $.notify({
+                                icon: "notifications",
+                                message: "Case " + model['procedure'] + " has been posted. We will notify you once somebody applies."
 
-                },
-                error => console.log(error)
-                );
+                            }, {
+                                    type: 'success',
+                                    timer: 4000,
+                                    placement: {
+                                        from: 'top',
+                                        align: 'right'
+                                    }
+                                });
+                            this.headerComp.closeModal();
+
+
+
+                        },
+                        error => console.log(error)
+                        );
+                }
+                )
+
         });
 
     }
