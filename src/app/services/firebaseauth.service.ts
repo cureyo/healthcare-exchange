@@ -11,6 +11,7 @@ export class AuthService {
     users: FirebaseListObservable<any[]>;
     cases: FirebaseListObservable<any[]>;
     regUser: FirebaseListObservable<any[]>;
+    caseResponse: FirebaseListObservable<any[]>;
     userData: any;
 
   private db = AppConfig.database;
@@ -59,8 +60,17 @@ export class AuthService {
     console.log("formsdata");
     console.log(formsData);
     // console.log(formsData.specializations);
-    const db = this.af.database.list(this.db.cases);
+    const db = this.af.database.list(this.db.caseResponse + "caseid"+ "/" +uid);
     return db.push(formsData)
+
+  }//_savePatientDetails
+
+   public _CaseResponse(uid, caseData) {
+    console.log("casedata");
+    console.log(caseData);
+    // console.log(formsData.specializations);
+    const db = this.af.database.list(this.db.cases);
+    return db.push(caseData)
 
   }//_savePatientDetails
 
@@ -174,10 +184,6 @@ export class AuthService {
       }//res
     );
   }//_fetchUser
-  
-// public _saveUserNames(UserDetails) {
-//     const carePaths = this.af.database.list(this.db.regUser);
-//     return carePaths.push(UserDetails);
-//   }
+
 
 }

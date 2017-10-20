@@ -25,8 +25,9 @@ export const AppConfig = {
     database: {
         users: environment.envName + '/Users/',
         cases: environment.envName + '/Cases/',
-        MedicalSpecialities:  '/MedicalSpecialities/'
-       
+        MedicalSpecialities:  '/MedicalSpecialities/',
+        caseResponse: environment.envName + '/CaseResponses/',
+        notification: environment.envName + '/Notifications/'
     }
 };
 //# sourceMappingURL=app.config.js.map

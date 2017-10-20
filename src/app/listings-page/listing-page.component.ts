@@ -11,7 +11,7 @@ declare var $: any;
 })
 export class ListingPageComponent implements OnInit {
 
-  private loginForm: FormGroup;
+  private ListingForm: FormGroup;
   private user: {};
   private isAuth: boolean;
   private caseData: any = [];
@@ -21,20 +21,43 @@ export class ListingPageComponent implements OnInit {
   ngOnInit() {
 
     $('.modal').hide();
-    this.loginForm = this._fb.group({
-      fname: [],
-      email: [, Validators.required],
-      psw: []
-    })
+   
     this._authService.getCases()
       .subscribe(
       casesData => {
         this.caseData = casesData;
         console.log("this.caseData", this.caseData)
+         this.ListingForm = this._fb.group({
+      fname: [],
+      email: [, Validators.required],
+      psw: []
+    })
+        
       }
       )
   }
   emailLogin(model) {
+
+  }
+
+    onSubmit(model) {
+    console.log(model, " hi ");
+    // model['facilityArea'] = this.clinicAddress;
+    // model['area'] = this.userAddress;
+    // model['speciality'] = this.specs;
+    console.log(model);
+    this._authService._getUser().subscribe(userData => {
+      console.log("user auth data", userData);
+      this._authService._saveCase(userData.user.uid, model)
+        .then(
+        data => {
+          console.log(data);
+          // this.router.navigate(['listings']);
+
+        },
+        error => console.log(error)
+         );
+    });
 
   }
 }

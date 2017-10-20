@@ -49,132 +49,141 @@
       <h4>Free global delivery for all products. Use coupon <b>25summer</b> for an extra 25% Off</h4>
    </div>
    </div>-->
+   <!--<form [formGroup]="ListingForm" action="" method="">-->
 <div class="subscribe-line subscribe-line-image" style="background-image: url('https://media.npr.org/assets/img/2016/02/22/surgery_wide-b9cd0af96c9ecd100c39123343ddfa3148b105af.jpg?s=1400'); min-height: 300px;">
-<div class="container">
-   <div class="row" style="margin: 20px;">
-      <div class="col-md-6 col-md-offset-3" style="margin-top: 20px;">
-         <div class="text-center">
-            <p class="description">
-               Engage and partner with other clinics and professionals on relevant cases
-            </p>
-            <h3 class="title">Search for relevant cases</h3>
-         </div>
-         <div class="card card-raised card-form-horizontal"  style="margin-bottom: 20px;">
-            <div class="card-content">
-               <ul class="nav nav-pills nav-pills-rose">
-                  <li class="active"><a href="#pill1" data-toggle="tab">Cases</a></li>
-                  <li><a href="#pill2" data-toggle="tab">Professionals</a></li>
-               </ul>
-               <div class="tab-content tab-space">
-                  <div class="tab-pane active" id="pill1">
-                     <form method="" action="">
-                        <div class="row">
-                           <div class="col-sm-9">
-                              <div class="input-group">
-                                 <span class="input-group-addon">
+    <div class="container">
+        <div class="row" style="margin: 20px;">
+            <div class="col-md-6 col-md-offset-3" style="margin-top: 20px;">
+                <div class="text-center">
+                    <p class="description">
+                        Engage and partner with other clinics and professionals on relevant cases
+                    </p>
+                    <h3 class="title">Search for relevant cases</h3>
+                </div>
+                <div class="card card-raised card-form-horizontal" style="margin-bottom: 20px;">
+                    <div class="card-content">
+                        <ul class="nav nav-pills nav-pills-rose">
+                            <li class="active"><a href="#pill1" data-toggle="tab">Cases</a></li>
+                            <li><a href="#pill2" data-toggle="tab">Professionals</a></li>
+                        </ul>
+                        <div class="tab-content tab-space">
+                            <div class="tab-pane active" id="pill1">
+                                <form method="" action="">
+                                    <div class="row">
+                                        <div class="col-sm-9">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
                                  <i class="material-icons">search</i>
                                  </span>
-                                 <input type="email" value="" placeholder="Search cases from your speciality" class="form-control" />
-                              </div>
-                           </div>
-                           <div class="col-sm-3">
-                              <button type="button" class="btn btn-primary btn-round">Search</button>
-                              <!--</div>
+                                                <input type="email" value="" placeholder="Search cases from your speciality" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <button type="button" class="btn btn-primary btn-round">Search</button>
+                                            <!--</div>
                                  <div class="col-sm-3">-->
-                              <!--<button type="button" class="btn btn-primary btn-round">Professionals</button>-->
-                           </div>
-                        </div>
-                     </form>
-                  </div>
-                  <div class="tab-pane" id="pill2">
-                     <form method="" action="">
-                        <div class="row">
-                           <div class="col-sm-9">
-                              <div class="input-group">
-                                 <span class="input-group-addon">
+                                            <!--<button type="button" class="btn btn-primary btn-round">Professionals</button>-->
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane" id="pill2">
+                                <form method="" action="">
+                                    <div class="row">
+                                        <div class="col-sm-9">
+                                            <div class="input-group">
+                                                <span class="input-group-addon">
                                  <i class="material-icons">search</i>
                                  </span>
-                                 <input type="email" value="" placeholder="Search professionals to engage" class="form-control" />
-                              </div>
-                           </div>
-                           <div class="col-sm-3">
-                              <button type="button" class="btn btn-primary btn-round">Search</button>
-                              <!--</div>
+                                                <input type="email" value="" placeholder="Search professionals to engage" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <button type="button" class="btn btn-primary btn-round">Search</button>
+                                            <!--</div>
                                  <div class="col-sm-3">-->
-                              <!--<button type="button" class="btn btn-primary btn-round">Professionals</button>-->
-                           </div>
+                                            <!--<button type="button" class="btn btn-primary btn-round">Professionals</button>-->
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                     </form>
-                  </div>
-               </div>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-   </div>
-</div>
-<!--</div>
-   </div>
-   </div>-->
-<div class="main main-raised">
-   <div class="section" style="overflow: inherit;">
-      <div class="container">
-         <!--<h2 class="section-title">Latest Offers</h2>-->
-         <div class="row">
-            <div *ngFor="let case of caseData; let i = index;" class="col-sm-4">
-            <div class="rotating-card-container manual-flip" style="height: 328px; margin-bottom: 30px;">
-               <div class="card card-rotate">
-                  <div class="front" style="height: 328px; ">
-                     <div class="card-content">
-                        <h5 class="category-social text-success">
-                           <i class="material-icons">location_on</i> {{case.area}}
-                        </h5>
-                        <h4 class="card-title">
-                           <a href="#pablo">{{case.procedure}}</a>
-                        </h4>
-                        <p class="card-description">
-                           {{case.caseBrief}}
-                        </p>
-                        <h6 class="card-title">
-                           Specialists Required
-                        </h6>
-                        <div class="row">
-                        <span *ngFor="let spec of case.speciality" class="label label-info">{{spec}}</span>
-                        </div>
-                        <div class="footer text-center">
-                           <button type="button" name="button" class="btn btn-success btn-fill btn-round btn-rotate">
+        </div>
+    </div>
+<!--</div>-->
+   <!--</form>-->
+
+    <div class="main main-raised">
+        <div class="section" style="overflow: inherit;">
+            <div class="container">
+                <!--<h2 class="section-title">Latest Offers</h2>-->
+                <div class="row">
+                    <div *ngFor="let case of caseData; let i = index;" class="col-sm-4">
+                        <div class="rotating-card-container manual-flip" style="height: 328px; margin-bottom: 30px;">
+                            <div class="card card-rotate">
+                                <div class="front" style="height: 328px; ">
+                                    <div class="card-content">
+                                        <h5 class="category-social text-success">
+                                            <i class="material-icons">location_on</i> {{case.area}}
+                                        </h5>
+                                        <h4 class="card-title">
+                                            <a href="#pablo">{{case.procedure}}</a>
+                                        </h4>
+                                        <p class="card-description">
+                                            {{case.caseBrief}}
+                                        </p>
+                                        <h6 class="card-title">
+                                            Specialists Required
+                                        </h6>
+                                        <div class="row">
+                                            <span *ngFor="let spec of case.speciality" class="label label-info">{{spec}}</span>
+                                        </div>
+                                        <div class="footer text-center">
+                                            <button type="button" name="button" class="btn btn-success btn-fill btn-round btn-rotate">
                               <i class="material-icons">refresh</i> Patient Details
                               <div class="ripple-container"></div>
                            </button>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="back" style="height: 328px;">
-                     <div class="card-content">
-                        <br>
-                        <h5 class="card-title">
-                           {{case.gender}}, {{case.age}}
-                        </h5>
-                        <h6 class="card-title">
-                           Pre-existing conditions
-                        </h6>
-                        <div class="row">
-                        <span *ngFor="let cond of case.condition" class="label label-info">{{cond}}</span>
-                        </div>
-                        <div class="footer text-center">
-                       
-                        </div>
-                        <br>
-                        <button type="button" name="button" class="btn btn-simple btn-round btn-rotate">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="back" style="height: 328px;">
+                                    <div class="card-content">
+                                        <br>
+                                        <h5 class="card-title">
+                                            {{case.gender}}, {{case.age}}
+                                        </h5>
+                                        <h6 class="card-title">
+                                            Pre-existing conditions
+                                        </h6>
+                                        <div class="row">
+                                            <span *ngFor="let cond of case.condition" class="label label-info">{{cond}}</span>
+                                        </div>
+                                        <div class="footer text-center">
+
+                                            <div class="form-group label-floating">
+                                                <label class="control-label" style="width: 50%">Quotation</label>
+                                                <input formControlName="quotation" type="text" class="form-control">
+                                            </div>
+                                            <!--  <button type="button" class="btn btn-primary btn-round">Submit</button>-->
+                                            <button (click)="onSubmit(ListingForm.value)" class='btn btn-simple btn-round'>Submit</button>
+
+                                        </div>
+                                        <br>
+                                        <button type="button" name="button" class="btn btn-simple btn-round btn-rotate">
                            <i class="material-icons">refresh</i> Back...
                            <div class="ripple-container"></div>
                         </button>
-                     </div>
-                  </div>
-               </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-             </div>
-         </div>
-      </div>
-   </div>
-   <!-- section -->
-</div>
+        </div>
+        <!-- section -->
+    </div>
+   
