@@ -28,9 +28,9 @@ export class ListingPageComponent implements OnInit {
         this.caseData = casesData;
         console.log("this.caseData", this.caseData)
          this.ListingForm = this._fb.group({
-      fname: [],
-      email: [, Validators.required],
-      psw: []
+      fname: ['',Validators.required],
+      email: ['', Validators.required],
+      psw: ['', Validators.required]
     })
         
       }
@@ -48,6 +48,7 @@ export class ListingPageComponent implements OnInit {
     console.log(model);
     this._authService._getUser().subscribe(userData => {
       console.log("user auth data", userData);
+      // saveFunction(form.value, case.$key)
       this._authService._saveCase(userData.user.uid, model)
         .then(
         data => {
