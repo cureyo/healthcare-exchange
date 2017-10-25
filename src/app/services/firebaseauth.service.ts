@@ -73,7 +73,10 @@ export class AuthService {
     return db.push(caseData)
 
   }//_savePatientDetails
-
+_saveCaseQuotation(form, caseId, applicantId) {
+   const db = this.af.database.object(this.db.caseResponse + "/" +caseId + "/" + applicantId);
+    return db.set(form)
+}
    private _getUserInfo(user: any): any {
 
     if (!user) {

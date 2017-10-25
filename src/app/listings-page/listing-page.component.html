@@ -95,7 +95,7 @@
                                                 <span class="input-group-addon">
                                  <i class="material-icons">search</i>
                                  </span>
-                                                <input type="email" value="" placeholder="Search professionals to engage" class="form-control" />
+                                                <input type="text" value="" placeholder="Search professionals to engage" class="form-control" />
                                             </div>
                                         </div>
                                         <div class="col-sm-3">
@@ -162,14 +162,14 @@
                                             <span *ngFor="let cond of case.condition" class="label label-info">{{cond}}</span>
                                         </div>
                                         <div class="footer text-center">
-
+                                            <form [formGroup]="ListingForm" action="" method="">
                                             <div class="form-group label-floating">
                                                 <label class="control-label" style="width: 50%">Quotation</label>
                                                 <input formControlName="quotation" type="text" class="form-control">
                                             </div>
                                             <!--  <button type="button" class="btn btn-primary btn-round">Submit</button>-->
-                                            <button (click)="onSubmit(ListingForm.value, caseData.$key)" class='btn btn-simple btn-round'>Submit</button>
-
+                                            <button (click)="onSubmit(ListingForm.value, case.$key)" class='btn btn-simple btn-round'>Submit</button>
+                                            </form>
                                         </div>
                                         <br>
                                         <button type="button" name="button" class="btn btn-simple btn-round btn-rotate">

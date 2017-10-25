@@ -79,7 +79,7 @@ export class PostCaseComponent implements OnInit {
                 .subscribe(
                 docUserDets => {
                     model['area'] = docUserDets.area.formatted_address;
-                    this._authService._saveCase(userData.user.uid, model)
+                    this._authService._CaseResponse(userData.user.uid, model)
                         .then(
                         data => {
                             console.log(data);

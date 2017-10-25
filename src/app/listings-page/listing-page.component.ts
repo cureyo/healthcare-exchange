@@ -28,9 +28,7 @@ export class ListingPageComponent implements OnInit {
         this.caseData = casesData;
         console.log("this.caseData", this.caseData)
          this.ListingForm = this._fb.group({
-      fname: ['',Validators.required],
-      email: ['', Validators.required],
-      psw: ['', Validators.required]
+      quotation: ['',Validators.required]
     })
         
       }
@@ -40,7 +38,7 @@ export class ListingPageComponent implements OnInit {
 
   }
 
-    onSubmit(model) {
+    onSubmit(model, caseId) {
     console.log(model, " hi ");
     // model['facilityArea'] = this.clinicAddress;
     // model['area'] = this.userAddress;
@@ -49,7 +47,8 @@ export class ListingPageComponent implements OnInit {
     this._authService._getUser().subscribe(userData => {
       console.log("user auth data", userData);
       // saveFunction(form.value, case.$key)
-      this._authService._saveCase(userData.user.uid, model)
+      model['applicantId'] = userData.user.uid;
+      this._authService._saveCaseQuotation(model, caseId, model['applicantId'] )
         .then(
         data => {
           console.log(data);
