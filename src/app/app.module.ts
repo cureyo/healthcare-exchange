@@ -31,7 +31,8 @@ import { RegistrationPageComponent } from './registration-page/registration-page
 import { HeaderComponent } from './header/header.component';
 import { ListingPageComponent } from './listings-page/listing-page.component';
 import { PostCaseComponent } from './post-case/post-case.component';
-// import { TagInputModule } from 'ng2-tag-input';
+import { DoctorProfileComponent } from './doctor-profile-page/doctor-profile.component';
+
 //import { TagInputComponent, TagComponent, TagInputModule, TagInputForm } from 'ng2-tag-input';
 import {RlTagInputModule} from 'angular2-tag-input';
 // Must export the config
@@ -56,7 +57,7 @@ export const firebaseConfig = {
     ListingPageComponent,
     HeaderComponent,
     PostCaseComponent,
-    
+    DoctorProfileComponent
     // TagInputDropdown,
     // TagInputComponent,
     // TagInputModule
