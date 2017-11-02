@@ -15,7 +15,6 @@ export class RegistrationPageComponent implements OnInit {
 
   @Input() objectId: any;
   private registrationForm: FormGroup;
-  // private user: {};
   private isAuth: boolean;
   private isClinic: boolean = true;
   private isDoctor: boolean = true;

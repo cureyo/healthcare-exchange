@@ -31,4 +31,8 @@ export class HeaderComponent implements OnInit {
     console.log("closing the damn thingie")
     $('#postcaseModal').hide();
   }
+  public openModal() {
+    console.log("closing the damn thingie")
+    $('#doctorProfileModal').hide();
+  }
 }

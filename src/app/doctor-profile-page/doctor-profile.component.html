@@ -31,18 +31,18 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
         		</button>
-        		<a class="navbar-brand" href="../presentation.html">Material Kit PRO</a>
+        		<a class="navbar-brand" href="../presentation.html">My PROfile Page</a>
         	</div>
 
         	<div class="collapse navbar-collapse">
         		<ul class="nav navbar-nav navbar-right">
     				<li>
 						<a href="../index.html">
-							<i class="material-icons">apps</i> Components
+							<i class="material-icons">apps</i> Images
 						</a>
 					</li>
 
-					<li class="dropdown">
+					<!--<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<i class="material-icons">view_day</i> Sections
 							<b class="caret"></b>
@@ -90,7 +90,7 @@
 							</li>
 
 						</ul>
-					</li>
+					</li>-->
 
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -156,16 +156,12 @@
 						</ul>
 					</li>
 
-					<li>
-						<a href="http://www.creative-tim.com/buy/material-kit-pro?ref=presentation" target="_blank" class="btn btn-white btn-simple">
-							<i class="material-icons">shopping_cart</i> Buy Now
-						</a>
-					</li>
         		</ul>
         	</div>
     	</div>
     </nav>
 
+<form *ngIf="doctorForm"  [formGroup]="DoctorForm" action="" method="">
 
 	<div class="page-header header-filter" data-parallax="true" style="background-image: url(&quot;../assets/img/examples/city.jpg&quot;); transform: translate3d(0px, 0px, 0px);"></div>
 
@@ -180,8 +176,11 @@
 	                            <img src="../assets/img/faces/christian.jpg" alt="Circle Image" class="img-circle img-responsive img-raised">
 	                        </div>
 	                        <div class="name">
-	                            <h3 class="title">Christian Louboutin</h3>
-								<h6>Designer</h6>
+	                            <h3 class="title">{{userData.fullName}}
+									<!--{{userData.user.fullName}}-->
+
+								</h3>
+								<h6>Designation</h6>
 								<a href="#pablo" class="btn btn-just-icon btn-simple btn-dribbble"><i class="fa fa-dribbble"></i></a>
                                 <a href="#pablo" class="btn btn-just-icon btn-simple btn-twitter"><i class="fa fa-twitter"></i></a>
                                 <a href="#pablo" class="btn btn-just-icon btn-simple btn-pinterest"><i class="fa fa-pinterest"></i></a>
@@ -197,7 +196,7 @@
 
 
                 <div class="description text-center">
-                    <p>An artist of considerable range, Chet Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+                    <p>Description </p>
                 </div>
 
 				<div class="row">
@@ -208,19 +207,19 @@
 									<li class="active">
 			                            <a href="#work" role="tab" data-toggle="tab">
 											<i class="material-icons">palette</i>
-											Work
+											Address
 			                            </a>
 			                        </li>
                                     <li>
 										<a href="#connections" role="tab" data-toggle="tab">
 											<i class="material-icons">people</i>
-											Connections
+											Specialities
 										</a>
 									</li>
 			                        <li>
 			                            <a href="#media" role="tab" data-toggle="tab">
 											<i class="material-icons">camera</i>
-			                                Media
+			                                Timings
 			                            </a>
 			                        </li>
 			                    </ul>
@@ -411,7 +410,7 @@
             </div>
         </div>
 	</div>
-
+</form>
 
     <footer class="footer">
         <div class="container">

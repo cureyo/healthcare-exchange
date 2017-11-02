@@ -12,6 +12,7 @@ declare var $: any;
 export class DoctorProfileComponent implements OnInit {
 
   private DoctorForm: FormGroup;
+  private doctorForm: boolean = false;
   private user: {};
   private isAuth: boolean;
   private caseData: any = [];
@@ -20,41 +21,50 @@ export class DoctorProfileComponent implements OnInit {
 
   ngOnInit() {
 
-    $('.modal').hide();
+   // $('.modal').hide();
    
-    this._authService.getCases()
+        this._authService._getUser()
       .subscribe(
-      casesData => {
-        this.caseData = casesData;
-        console.log("this.caseData", this.caseData)
-         this.DoctorForm = this._fb.group({
-      quotation: ['',Validators.required]
-    })
-        
-      }
-      )
-  }
-  emailLogin(model) {
+      userData => {
+        console.log(userData, userData.user.firstName);
+        this.user = userData.user;
+
+  this.doctorForm = true;
+
+       this.DoctorForm = this._fb.group({
+          fullName: [userData.user.firstName + " " + userData.user.lastName, Validators.required],
+          Images: [userData.user.facilityImages, Validators.required],
+          speciality: this._fb.array([]),
+          Hospital: [userData.user.facilityName, Validators.required],
+                  
+       })
+        this.doctorForm = true;
+
+        console.log("this.DoctorForm ", this.DoctorForm)
+         
+         
+   })
 
   }
+ 
 
-    onSubmit(model, caseId) {
-    console.log(model, " hi ");
-    console.log(model);
-    this._authService._getUser().subscribe(userData => {
-      console.log("user auth data", userData);
-      // saveFunction(form.value, case.$key)
-      model['applicantId'] = userData.user.uid;
-      this._authService._saveCaseQuotation(model, caseId, model['applicantId'] )
-        .then(
-        data => {
-          console.log(data);
-          // this.router.navigate(['listings']);
+  //   onSubmit(model, caseId) {
+  //   console.log(model, " hi ");
+  //   console.log(model);
+  //   this._authService._getUser().subscribe(userData => {
+  //     console.log("user auth data", userData);
+  //     // saveFunction(form.value, case.$key)
+  //     model['applicantId'] = userData.user.uid;
+  //     this._authService._saveCaseQuotation(model, caseId, model['applicantId'] )
+  //       .then(
+  //       data => {
+  //         console.log(data);
+  //         // this.router.navigate(['listings']);
 
-        },
-        error => console.log(error)
-         );
-    });
+  //       },
+  //       error => console.log(error)
+  //        );
+  //   });
 
-  }
+  // }
 }
