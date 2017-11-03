@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from "../services/firebaseauth.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
@@ -11,37 +11,30 @@ declare var $: any;
 })
 export class DoctorProfileComponent implements OnInit {
 
-  private DoctorForm: FormGroup;
+@Input() objectId: any;
   private doctorForm: boolean = false;
-  private user: {};
+  private user: any = [];
   private isAuth: boolean;
-  private caseData: any = [];
+  private userId: any;
 
   constructor(private _fb: FormBuilder, private _authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
 
    // $('.modal').hide();
-   
-        this._authService._getUser()
+   this._authService._getUser().subscribe(userData => {
+      console.log("user auth data", userData);
+     
+     console.log(userData.user.uid)
+     this.userId = userData.user.uid;
+        this._authService._getUserDetails(this.userId)
       .subscribe(
-      userData => {
-        console.log(userData, userData.user.firstName);
-        this.user = userData.user;
-
-  this.doctorForm = true;
-
-       this.DoctorForm = this._fb.group({
-          fullName: [userData.user.firstName + " " + userData.user.lastName, Validators.required],
-          Images: [userData.user.facilityImages, Validators.required],
-          speciality: this._fb.array([]),
-          Hospital: [userData.user.facilityName, Validators.required],
-                  
-       })
-        this.doctorForm = true;
-
-        console.log("this.DoctorForm ", this.DoctorForm)
-         
+      Detaildata => {
+        console.log(Detaildata);
+       this.user = Detaildata;
+        console.log("this.user ", this.user)
+      })   
+      
          
    })
 
