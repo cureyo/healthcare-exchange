@@ -11,53 +11,32 @@ declare var $: any;
 })
 export class DoctorProfileComponent implements OnInit {
 
-@Input() objectId: any;
-  private doctorForm: boolean = false;
-  private user: any = [];
+  @Input() objectId: any;
   private isAuth: boolean;
   private userId: any;
+  private userData: any;
 
   constructor(private _fb: FormBuilder, private _authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
 
-   // $('.modal').hide();
-   this._authService._getUser().subscribe(userData => {
+    // $('.modal').hide();
+    this._authService._getUser().subscribe(userData => {
       console.log("user auth data", userData);
-     
-     console.log(userData.user.uid)
-     this.userId = userData.user.uid;
-        this._authService._getUserDetails(this.userId)
-      .subscribe(
-      Detaildata => {
-        console.log(Detaildata);
-       this.user = Detaildata;
-        console.log("this.user ", this.user)
-      })   
-      
-         
-   })
+
+      console.log(userData.user.uid)
+      this.userId = userData.user.uid;
+      this._authService._getUserDetails(this.userId)
+        .subscribe(
+        Detaildata => {
+          console.log(Detaildata);
+          this.userData = Detaildata;
+          console.log("this.user ", this.userData)
+        })
+
+
+    })
 
   }
- 
 
-  //   onSubmit(model, caseId) {
-  //   console.log(model, " hi ");
-  //   console.log(model);
-  //   this._authService._getUser().subscribe(userData => {
-  //     console.log("user auth data", userData);
-  //     // saveFunction(form.value, case.$key)
-  //     model['applicantId'] = userData.user.uid;
-  //     this._authService._saveCaseQuotation(model, caseId, model['applicantId'] )
-  //       .then(
-  //       data => {
-  //         console.log(data);
-  //         // this.router.navigate(['listings']);
-
-  //       },
-  //       error => console.log(error)
-  //        );
-  //   });
-
-  // }
 }

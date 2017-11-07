@@ -46,32 +46,19 @@ export class AuthService {
   public getCases() {
     const db = this.af.database.list(this.db.cases);
     return db;
-  }
-  //   public _getUserDetails() {
-  //   const db = this.af.database.list(this.db.users);
-  //   return db;
-  // }
+  }//get all cases
+  
     public _getUserDetails(uid) {
     const db = this.af.database.object(this.db.users +"/"+ uid);
     return db;
-  }
+  }//get each user details
+
   public _saveUser(uid, formData) {
-    console.log("formdata");
-    console.log(formData);
-    // console.log(formData.specializations);
+    console.log("formdata", formData);
     const db = this.af.database.object(this.db.users + uid);
     return db.set(formData)
 
   }//_saveUser
-
-  //  public _saveCase(uid, formsData) {
-  //   console.log("formsdata");
-  //   console.log(formsData);
-  //   // console.log(formsData.specializations);
-  //   const db = this.af.database.list(this.db.caseResponse + "caseid"+ "/" +uid);
-  //   return db.push(formsData)
-
-  // }//_savePatientDetails
 
    public _CaseResponse(uid, caseData) {
     console.log("casedata");
@@ -81,6 +68,7 @@ export class AuthService {
     return db.push(caseData)
 
   }//_savePatientDetails
+  
 _saveCaseQuotation(form, caseId, applicantId) {
    const db = this.af.database.object(this.db.caseResponse + "/" +caseId + "/" + applicantId);
     return db.set(form)
