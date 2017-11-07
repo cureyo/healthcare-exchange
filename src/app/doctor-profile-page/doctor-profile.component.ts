@@ -15,6 +15,8 @@ export class DoctorProfileComponent implements OnInit {
   private isAuth: boolean;
   private userId: any;
   private userData: any;
+  private dt1: any;
+  private dt2: any;
 
   constructor(private _fb: FormBuilder, private _authService: AuthService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
@@ -36,6 +38,17 @@ export class DoctorProfileComponent implements OnInit {
 
 
     })
+
+    this.calculateExperience('04/02/2014', '11/04/2014');
+    console.log(this.calculateExperience('04/02/2014', '11/04/2014'))
+
+  }
+  calculateExperience(date1, date2) {
+    this.dt1 = new Date(date1);
+    this.dt2 = new Date(date2);
+    return Math.floor((Date.UTC(this.dt2.getFullYear(), this.dt2.getMonth(), this.dt2.getDate()) - Date.UTC(this.dt1.getFullYear(), this.dt1.getMonth(), this.dt1.getDate())) / (1000 * 60 * 60 * 24));
+
+    
 
   }
 
