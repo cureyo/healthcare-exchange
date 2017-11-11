@@ -49,14 +49,13 @@ export class ListingPageComponent implements OnInit {
       console.log("user auth data", userData);
       // saveFunction(form.value, case.$key)
       model['applicantId'] = userData.user.uid;
-      model['applicantName'] = userData.user.fullname
+      model['applicantName'] = userData.user.firstName + " " + userData.user.lastName 
       console.log(model['applicantName'], userData.user.fullname)
       this._authService._saveCaseQuotation(model, caseId, model['applicantId'] )
         .then(
         data => {
            console.log("data");
           console.log(data);
-          // this.router.navigate(['listings']);
 
           $.notify({
                                 icon: "notifications",

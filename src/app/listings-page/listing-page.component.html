@@ -1,6 +1,6 @@
 <header-component></header-component>
 
-   <!--<form [formGroup]="ListingForm" action="" method="">-->
+<!--<form [formGroup]="ListingForm" action="" method="">-->
 <div class="subscribe-line subscribe-line-image" style="background-image: url('https://media.npr.org/assets/img/2016/02/22/surgery_wide-b9cd0af96c9ecd100c39123343ddfa3148b105af.jpg?s=1400'); min-height: 300px;">
     <div class="container">
         <div class="row" style="margin: 20px;">
@@ -64,8 +64,8 @@
             </div>
         </div>
     </div>
-<!--</div>-->
-   <!--</form>-->
+    <!--</div>-->
+    <!--</form>-->
 
     <div class="main main-raised">
         <div class="section" style="overflow: inherit;">
@@ -114,12 +114,13 @@
                                         </div>
                                         <div class="footer text-center">
                                             <form [formGroup]="ListingForm" action="" method="">
-                                            <div class="form-group label-floating">
-                                                <label class="control-label" style="width: 50%">Quotation</label>
-                                                <input formControlName="quotation" type="text" class="form-control">
-                                            </div>
-                                            <!--  <button type="button" class="btn btn-primary btn-round">Submit</button>-->
-                                            <button (click)="onSubmit(ListingForm.value, case.$key)" class='btn btn-simple btn-round'>Submit</button>
+                                                <div class="form-group label-floating">
+                                                    <label class="control-label" style="width: 50%">Quotation</label>
+                                                    <input formControlName="quotation" type="text" class="form-control">
+                                                </div>
+                                                <!--  <button type="button" class="btn btn-primary btn-round">Submit</button>-->
+                                                <button (click)="onSubmit(ListingForm.value, case.$key)" class='btn btn-simple btn-round'>Submit</button>
+                                                
                                             </form>
                                         </div>
                                         <br>
@@ -137,4 +138,3 @@
         </div>
         <!-- section -->
     </div>
-   

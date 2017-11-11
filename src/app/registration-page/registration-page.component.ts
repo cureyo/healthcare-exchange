@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from "../services/firebaseauth.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
+import { HeaderComponent } from '../header/header.component'
 
 declare var $: any;
 
@@ -26,6 +27,7 @@ export class RegistrationPageComponent implements OnInit {
   private specs: any = [];
   constructor(
     private _fb: FormBuilder,
+    private headerComp: HeaderComponent,
     private _authService: AuthService,
     private router: Router,
     private activatedRoute: ActivatedRoute) { }
@@ -158,16 +160,47 @@ export class RegistrationPageComponent implements OnInit {
     console.log(model);
     this._authService._getUser().subscribe(userData => {
       console.log("user auth data", userData);
+       model['postedBy'] = userData.user.uid;
       this._authService._saveUser(userData.user.uid, model)
         .then(
         data => {
           console.log(data);
+
+            // this._authService._fetchDocUser(userData.user.uid)
+            //     .subscribe(
+            //     docUserDets => {
+                    
+            //         this._authService._CaseResponse(userData.user.uid, model)
+            //             .then(
+            //             data => {
+            //                 console.log(data);
+            //                 //  $('.modal').hide();
+            //                 $.notify({
+            //                     icon: "notifications",
+            //                     message: "Case " + model['procedure'] + " has been posted. We will notify you once somebody applies."
+
+            //                 }, {
+            //                         type: 'success',
+            //                         timer: 4000,
+            //                         placement: {
+            //                             from: 'top',
+            //                             align: 'right'
+            //                         }
+            //                     });
+            //                 this.headerComp.closeModal();
+
+            //             },
+            //             error => console.log(error)
+            //             );
+            //     })
+
           this.router.navigate(['listings']);
 
         },
         error => console.log(error)
         );
     });
+
 
   }
 
