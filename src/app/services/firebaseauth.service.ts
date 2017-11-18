@@ -4,23 +4,24 @@ import 'rxjs/add/operator/first';
 import { AngularFire, FirebaseAuth, FirebaseListObservable, AuthProviders, AuthMethods } from 'angularfire2';
 import { Router } from "@angular/router";
 import { AppConfig } from "../config/app.config";
+declare var $: any;
 
 @Injectable()
 export class AuthService {
 
-    users: FirebaseListObservable<any[]>;
-    cases: FirebaseListObservable<any[]>;
-    regUser: FirebaseListObservable<any[]>;
-    caseResponse: FirebaseListObservable<any[]>;
-    userData: any;
+  users: FirebaseListObservable<any[]>;
+  cases: FirebaseListObservable<any[]>;
+  regUser: FirebaseListObservable<any[]>;
+  caseResponse: FirebaseListObservable<any[]>;
+  userData: any;
 
   private db = AppConfig.database;
 
-   constructor(public af: AngularFire, public firebase: FirebaseAuth, private router: Router) {
+  constructor(public af: AngularFire, public firebase: FirebaseAuth, private router: Router) {
 
     // this.users = af.database.list(this.db.doctors);
     // this.regUser = af.database.list(this.db.userNames);
-   
+
   }//constructor
 
   isAuthenticated() {
@@ -47,9 +48,9 @@ export class AuthService {
     const db = this.af.database.list(this.db.cases);
     return db;
   }//get all cases
-  
-    public _getUserDetails(uid) {
-    const db = this.af.database.object(this.db.users +"/"+ uid);
+
+  public _getUserDetails(uid) {
+    const db = this.af.database.object(this.db.users + "/" + uid);
     return db;
   }//get each user details
 
@@ -60,7 +61,7 @@ export class AuthService {
 
   }//_saveUser
 
-   public _CaseResponse(uid, caseData) {
+  public _CaseResponse(uid, caseData) {
     console.log("casedata");
     console.log(caseData);
     // console.log(formsData.specializations);
@@ -68,12 +69,12 @@ export class AuthService {
     return db.push(caseData)
 
   }//_savePatientDetails
-  
-_saveCaseQuotation(form, caseId, applicantId) {
-   const db = this.af.database.object(this.db.caseResponse + "/" +caseId + "/" + applicantId);
+
+  _saveCaseQuotation(form, caseId, applicantId) {
+    const db = this.af.database.object(this.db.caseResponse + "/" + caseId + "/" + applicantId);
     return db.set(form)
-}
-   private _getUserInfo(user: any): any {
+  }
+  private _getUserInfo(user: any): any {
 
     if (!user) {
       //console.log("user call if null",user);
@@ -112,21 +113,24 @@ _saveCaseQuotation(form, caseId, applicantId) {
       }).then(
         data => {
           console.log(data);
+          $('#signupModal').hide();
+          $('#loginModal').hide();
         }).catch(
-          error => {
-            console.log(error);
-            if (error['code'] == "auth/web-storage-unsupported")
+        error => {
+          console.log(error);
+          if (error['code'] == "auth/web-storage-unsupported")
             alert('Oops! Seems like 3rd party cookies are disabled. You can change it to just allow us, if you want. Trust us! We are good people For Chrome, MORE (icon with 3 dots) > SETTINGS > ADVANCED (Section) > CONTENT SETTINGS > COOKIES > MANAGE EXCEPTIONS & Set your preference');
-          else 
-        alert(error.message);}
+          else
+            alert(error.message);
+        }
         )
     )
 
   }
-    public _getMedicalSpecialities() {
+  public _getMedicalSpecialities() {
     return this.af.database.object(this.db.MedicalSpecialities);
   }
-    glogin() {
+  glogin() {
     console.log("doctor login firebase function called:");
     return (
       this.af.auth.login({
@@ -137,12 +141,13 @@ _saveCaseQuotation(form, caseId, applicantId) {
         data => {
           console.log(data);
         }).catch(
-          error => {
-            console.log(error);
-            if (error['code'] == "auth/web-storage-unsupported")
+        error => {
+          console.log(error);
+          if (error['code'] == "auth/web-storage-unsupported")
             alert('Oops! Seems like 3rd party cookies are disabled. You can change it to just allow us, if you want. Trust us! We are good people For Chrome, MORE (icon with 3 dots) > SETTINGS > ADVANCED (Section) > CONTENT SETTINGS > COOKIES > MANAGE EXCEPTIONS & Set your preference');
-          else 
-        alert(error.message);}
+          else
+            alert(error.message);
+        }
         )
     )
 
