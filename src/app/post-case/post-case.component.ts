@@ -2,7 +2,8 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { AuthService } from "../services/firebaseauth.service";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
-import { HeaderComponent } from '../header/header.component'
+import { HeaderComponent } from '../header/header.component';
+import { FileUploadComponent } from "./file-upload/file-upload.component";
 
 declare var $: any;
 

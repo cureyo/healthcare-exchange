@@ -1,10 +1,12 @@
 import { Route } from '@angular/router';
 import { AppComponent } from './app.component';
-import {LandingPageComponent} from './landing-page/landing-page.component';
-import {RegistrationPageComponent} from './registration-page/registration-page.component';
-import {ListingPageComponent} from './listings-page/listing-page.component';
+import { LandingPageComponent} from './landing-page/landing-page.component';
+import { RegistrationPageComponent} from './registration-page/registration-page.component';
+import { ListingPageComponent} from './listings-page/listing-page.component';
 import { PostCaseComponent } from './post-case/post-case.component';
 import { DoctorProfileComponent } from './doctor-profile-page/doctor-profile.component';
+import { FileUploadComponent } from './post-case/file-upload/file-upload.component';
+
 
 export const MODULE_ROUTES: Route[] =[
 
@@ -22,6 +24,7 @@ export const MODULE_COMPONENTS = [
     RegistrationPageComponent,
     ListingPageComponent,
     PostCaseComponent,
-    DoctorProfileComponent
+    DoctorProfileComponent,
+     FileUploadComponent
    
 ]

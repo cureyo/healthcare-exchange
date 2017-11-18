@@ -188,6 +188,17 @@ export class AuthService {
       }//res
     );
   }//_fetchUser
+    public _getHealthReports(uid) {
+    console.log(this.db.caseResponse + uid);
+    //console.log("uid data:", uid);
+    //console.log("url", this.db.healthReports + uid);
+    return this.af.database.object(this.db.caseResponse + uid);
+  }//_getHealthReports
 
-
+ public _saveHealthReports(data, caredoneId, index) {
+    if (index == null || index == undefined)
+      index = 0;
+    return this.af.database.object(this.db.caseResponse + caredoneId + '/' + index)
+      .set(data);
+  }
 }
